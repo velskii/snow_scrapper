@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5pt"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginBottom="50px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/titleFontSize"
+        android:text="Login" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email :"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/email_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="password:"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/password_login"
+            android:password="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px"
+            android:ems="10"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+        <CheckBox
+            android:id="@+id/remember_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remember Password"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/btnLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/buttonFontSize"
+            android:text="Login"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Register if you do not have an account."
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="50px"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/linkRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/buttonFontSize"
+            android:text="Register"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "636090332049",
+    "project_id": "mapd726",
+    "storage_bucket": "mapd726.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636090332049:android:b6af414fde52c1fe386030",
+        "android_client_info": {
+          "package_name": "com.example.snow_scrapper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636090332049-iasjo9njtncb55miui0de1hivpv2ggn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATuIjYWu9_gsyvifolkkzqd0pmJFILfFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636090332049-iasjo9njtncb55miui0de1hivpv2ggn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">snow_scrapper</string>
+
+    <string name="description">snow scrapper is a platform for Canadians who suffer from blizzard.</string>
+
+    <string name="agreement">Agree with Terms and policy</string>
+
 </resources>
