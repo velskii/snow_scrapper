@@ -27,12 +27,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomeActivity";
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
-    private final FirebaseFirestore db;
-
-    HomeActivity(FirebaseFirestore db) {
-        this.db = db;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         // sign out function
         Button btnSignOut = (Button) findViewById(R.id.signOut);
@@ -58,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             String uid = currentUser.getUid();
-//            getUserInfo(uid);
+            getUserInfo(uid);
 
         } else {
             Toast.makeText(HomeActivity.this, "Please login first.",
@@ -77,6 +74,17 @@ public class HomeActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
+
+                                TextView tv_uid = findViewById(R.id.uid);
+                                TextView tv_username = findViewById(R.id.username);
+                                TextView tv_role = findViewById(R.id.user_role);
+                                TextView tv_address = findViewById(R.id.user_address);
+                                TextView tv_email = findViewById(R.id.user_email);
+                                tv_uid.setText(document.getData().get("username").toString());
+                                tv_username.setText(document.getData().get("username").toString());
+                                tv_role.setText(document.getData().get("role").toString());
+                                tv_address.setText(document.getData().get("address").toString());
+                                tv_email.setText(document.getData().get("email").toString());
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

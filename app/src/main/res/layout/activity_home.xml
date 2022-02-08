@@ -16,6 +16,28 @@
         android:orientation="vertical"
         android:id="@+id/user_info"
         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/uid"
+            android:text=""
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/user_role"
+            android:text=""
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/username"
+            android:text=""
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,14 +45,14 @@
             android:id="@+id/user_email"
             android:text=""
             />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:id="@+id/user_id"
+            android:id="@+id/user_address"
             android:text=""
             />
+
     </LinearLayout>
 
     <LinearLayout
