@@ -81,7 +81,7 @@
         android:id="@+id/link_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/link_register"
+        android:text="@string/swipe_left_for_register"
         android:textSize="15sp"
         android:fontFamily="@font/roboto_regular"
         android:layout_centerHorizontal="true"
