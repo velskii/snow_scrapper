@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,10 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
         // Initialize firebaseStore
         db = FirebaseFirestore.getInstance();
-
 
         TextView linkLogin = findViewById(R.id.linkLogin);
         linkLogin.setOnClickListener(new View.OnClickListener() {
@@ -57,41 +57,46 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        EditText edit_username = (EditText) findViewById(R.id.user_name_register);
-//        String username = edit_username.getText().toString();
-
-        EditText edit_email = (EditText) findViewById(R.id.user_email_register);
-//        String email = edit_email.getText().toString();
-
-        EditText edit_password = (EditText) findViewById(R.id.user_password_register);
-//        String pwd = edit_password.getText().toString();
-
-        EditText edit_repassword = (EditText) findViewById(R.id.user_repassword_register);
-//        String rpwd = edit_repassword.getText().toString();
-
-        EditText edit_address = (EditText) findViewById(R.id.user_address_register);
-//        String address = edit_address.getText().toString();
-
         Button btnRegister = findViewById(R.id.btn_register);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if ( !Patterns.EMAIL_ADDRESS.matcher( edit_email.getText().toString() ).matches() ) {
+                RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group);
+                RadioButton radioButton = (RadioButton) findViewById( radioGroup.getCheckedRadioButtonId() );
+                String role = radioButton.getText().toString();
+
+                EditText edit_username = (EditText) findViewById(R.id.user_name_register);
+                String username = edit_username.getText().toString();
+
+                EditText edit_email = (EditText) findViewById(R.id.user_email_register);
+                String email = edit_email.getText().toString();
+
+                EditText edit_password = (EditText) findViewById(R.id.user_password_register);
+                String pwd = edit_password.getText().toString();
+
+                EditText edit_repassword = (EditText) findViewById(R.id.user_repassword_register);
+                String rpwd = edit_repassword.getText().toString();
+
+                EditText edit_address = (EditText) findViewById(R.id.user_address_register);
+                String address = edit_address.getText().toString();
+
+
+                if ( !Patterns.EMAIL_ADDRESS.matcher( email ).matches() ) {
                     edit_email.setError("Enter the Email with right format");
-                } else if ( edit_password.getText().toString().length() < 6 ) {
+                } else if ( pwd.length() < 6 ) {
                     edit_password.setError("Please Enter password more than 6 digits");
-                } else if ( !edit_repassword.getText().toString().contentEquals(edit_password.getText().toString()) ) {
+                } else if ( !rpwd.contentEquals(pwd) ) {
                     edit_repassword.setError("Please Enter the same password");
                 } else {
-                    createAccount( edit_email.getText().toString(), edit_password.getText().toString(), edit_username.getText().toString(), edit_address.getText().toString() );
+                    createAccount( role, email, pwd, username, address );
                 }
             }
         });
 
     }
 
-    private void createAccount(String email, String password, String username, String address) {
+    private void createAccount(String role, String email, String password, String username, String address) {
         // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -101,20 +106,20 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI( user, username, address );
+                            updateUI( role, user, username, address );
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null, null, null);
+                            updateUI(null, null, null, null);
                         }
                     }
                 });
         // [END create_user_with_email]
     }
 
-    private void updateUI(FirebaseUser user, String username, String address) {
+    private void updateUI(String role, FirebaseUser user, String username, String address) {
 
         if(user != null) {
             String name = user.getDisplayName();
@@ -122,7 +127,6 @@ public class RegisterActivity extends AppCompatActivity {
             Uri photoUrl = user.getPhotoUrl();
             boolean emailVerified = user.isEmailVerified();
             String uid = user.getUid();
-            String role = "customer";
 
             storeAdditionalFields(role, uid, username, address, photoUrl, email, emailVerified);
         }

@@ -101,6 +101,7 @@
 
     <RadioGroup
         android:layout_width="match_parent"
+        android:id="@+id/radio_group"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
