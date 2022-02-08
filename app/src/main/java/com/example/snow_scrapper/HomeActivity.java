@@ -2,50 +2,35 @@ package com.example.snow_scrapper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "HomeActivity";
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         mAuth = FirebaseAuth.getInstance();
 
-        Button linkRegister = (Button) findViewById(R.id.linkRegister);
-        linkRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-            }
-        });
-
-        Button linkLogin = (Button) findViewById(R.id.linkLogin);
-        linkLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            }
-        });
     }
-
-
 
     @Override
     public void onStart() {
@@ -64,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
             TextView user_id = findViewById(R.id.user_id);
             user_id.setText(uid);
 
-            // description area hide
-            LinearLayout description = findViewById(R.id.description);
-            description.setVisibility(View.GONE);
-
             // sign out function
             Button btnSignOut = (Button) findViewById(R.id.signOut);
             btnSignOut.setOnClickListener(new View.OnClickListener() {
@@ -78,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
             });
 
         } else {
-
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            Toast.makeText(HomeActivity.this, "Please login first.",
+                    Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
         }
     }
 
@@ -162,6 +144,5 @@ public class MainActivity extends AppCompatActivity {
                 });
         // [END delete_user]
     }
-
 
 }

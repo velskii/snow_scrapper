@@ -1,5 +1,22 @@
 <resources>
-    <string name="app_name">snow_scrapper</string>
+    <string name="app_name">snow scrapper</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="swipe_left_for_register">Swipe Left for Register</string>
+    <string name="link_register">If you don\'t have an account. Go to Register</string>
+    <string name="swipe_right_for_login">Swipe Right for Login</string>
+    <string name="link_login">If you already have an account. Go to Login</string>
+
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="e_mail">Email</string>
+    <string name="tag">Join us and Search/public your \nshoveling snow services with others</string>
+
+    <string name="register">Register</string>
+    <string name="re_type_password">Re-type Password</string>
+    <string name="your_name">Full Name</string>
+    <string name="re_type_address">Address</string>
+
 
     <string name="description">snow scrapper is a platform for Canadians who suffer from blizzard.</string>
 
