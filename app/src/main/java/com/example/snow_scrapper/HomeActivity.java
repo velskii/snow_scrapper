@@ -17,11 +17,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomeActivity";
     private FirebaseAuth mAuth;
+
+    private final FirebaseFirestore db;
+
+    HomeActivity(FirebaseFirestore db) {
+        this.db = db;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +41,15 @@ public class HomeActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        // sign out function
+        Button btnSignOut = (Button) findViewById(R.id.signOut);
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
+            }
+        });
+
     }
 
     @Override
@@ -37,32 +57,32 @@ public class HomeActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            String name = currentUser.getDisplayName();
-            String email = currentUser.getEmail();
-            Uri photoUrl = currentUser.getPhotoUrl();
-            boolean emailVerified = currentUser.isEmailVerified();
             String uid = currentUser.getUid();
-
-            TextView user_email = findViewById(R.id.user_email);
-            user_email.setText(email);
-
-            TextView user_id = findViewById(R.id.user_id);
-            user_id.setText(uid);
-
-            // sign out function
-            Button btnSignOut = (Button) findViewById(R.id.signOut);
-            btnSignOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    signOut();
-                }
-            });
+//            getUserInfo(uid);
 
         } else {
             Toast.makeText(HomeActivity.this, "Please login first.",
                     Toast.LENGTH_SHORT).show();
             startActivity(new Intent(HomeActivity.this, LoginActivity.class));
         }
+    }
+
+    public void getUserInfo(String uid) {
+        this.db.collection("users")
+                .whereEqualTo("uid", uid)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
     }
 
     public void signOut() {
