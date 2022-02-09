@@ -63,6 +63,11 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group);
+                if (radioGroup.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(RegisterActivity.this, "Choose your role.",
+                            Toast.LENGTH_SHORT).show();
+                    return ;
+                }
                 RadioButton radioButton = (RadioButton) findViewById( radioGroup.getCheckedRadioButtonId() );
                 String role = radioButton.getText().toString();
 
