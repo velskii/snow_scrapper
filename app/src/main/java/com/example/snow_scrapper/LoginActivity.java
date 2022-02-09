@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         mAuth = FirebaseAuth.getInstance();
 
         TextView linkRegister = findViewById(R.id.link_register);
@@ -75,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                 y2 = touchEvent.getY();
                 if (x1 < x2) {
 //                    swipe right
-                } else if (x1 > x2) {
+                } else if (x1 - 10 > x2) {
                     startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 }
             break;

@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group);
                 if (radioGroup.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(RegisterActivity.this, "Choose your role.",
+                    Toast.makeText(RegisterActivity.this, "Please choose your role.",
                             Toast.LENGTH_SHORT).show();
                     return ;
                 }
@@ -86,13 +86,16 @@ public class RegisterActivity extends AppCompatActivity {
                 EditText edit_address = (EditText) findViewById(R.id.user_address_register);
                 String address = edit_address.getText().toString();
 
-
-                if ( !Patterns.EMAIL_ADDRESS.matcher( email ).matches() ) {
-                    edit_email.setError("Enter the Email with right format");
+                if ( username.isEmpty() ) {
+                    edit_username.setError("Please Enter the username");
+                } else if ( !Patterns.EMAIL_ADDRESS.matcher( email ).matches() ) {
+                    edit_email.setError("Please Enter the Email with right format");
                 } else if ( pwd.length() < 6 ) {
                     edit_password.setError("Please Enter password more than 6 digits");
                 } else if ( !rpwd.contentEquals(pwd) ) {
                     edit_repassword.setError("Please Enter the same password");
+                } else if ( address.isEmpty() ) {
+                    edit_address.setError("Please Enter the address");
                 } else {
                     createAccount( role, email, pwd, username, address );
                 }
@@ -136,7 +139,6 @@ public class RegisterActivity extends AppCompatActivity {
             storeAdditionalFields(role, uid, username, address, photoUrl, email, emailVerified);
         }
 
-
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
     }
 
@@ -179,7 +181,7 @@ public class RegisterActivity extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 x2 = touchEvent.getX();
                 y2 = touchEvent.getY();
-                if (x1 < x2) {
+                if (x1 + 10 < x2) {
                     startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 } else if (x1 > x2) {
                     // swipe left
