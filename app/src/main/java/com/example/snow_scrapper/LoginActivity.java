@@ -43,20 +43,23 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        EditText edit_email = findViewById(R.id.email_login);
-        EditText edit_password = findViewById(R.id.password_login);
+
 
         Button btnLogin = findViewById(R.id.btn_login);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText edit_email = findViewById(R.id.email_login);
+                String email = edit_email.getText().toString();
+                EditText edit_password = findViewById(R.id.password_login);
+                String pwd = edit_password.getText().toString();
 
-                if ( !Patterns.EMAIL_ADDRESS.matcher( edit_email.getText().toString()).matches() ) {
+                if ( !Patterns.EMAIL_ADDRESS.matcher( email ).matches() ) {
                     edit_email.setError("Enter the Email with right format");
-                } else if ( edit_password.getText().toString().length() < 6 ) {
+                } else if ( pwd.length() < 6 ) {
                     edit_password.setError("Please Enter password more than 6 digits");
                 } else {
-                    signIn(edit_email.getText().toString(), edit_password.getText().toString());
+                    signIn( email, pwd );
                 }
             }
         });
@@ -99,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-                            updateUI(null);
                         }
                     }
                 });

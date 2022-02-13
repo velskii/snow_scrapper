@@ -3,6 +3,7 @@ package com.example.snow_scrapper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -59,17 +60,17 @@ public class RegisterActivity extends AppCompatActivity {
 
         Button btnRegister = findViewById(R.id.btn_register);
         btnRegister.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
 
+                String role = "";
                 RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio_group);
-                if (radioGroup.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(RegisterActivity.this, "Please choose your role.",
-                            Toast.LENGTH_SHORT).show();
-                    return ;
+                if (radioGroup.getCheckedRadioButtonId() > 0) {
+                    RadioButton radioButton = (RadioButton) findViewById( radioGroup.getCheckedRadioButtonId() );
+                    role = radioButton.getText().toString();
                 }
-                RadioButton radioButton = (RadioButton) findViewById( radioGroup.getCheckedRadioButtonId() );
-                String role = radioButton.getText().toString();
+
 
                 EditText edit_username = (EditText) findViewById(R.id.user_name_register);
                 String username = edit_username.getText().toString();
@@ -96,6 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                     edit_repassword.setError("Please Enter the same password");
                 } else if ( address.isEmpty() ) {
                     edit_address.setError("Please Enter the address");
+                } else if ( role.isEmpty() ) {
+                    RadioButton radioButton = (RadioButton) findViewById(R.id.tradesman_role);
+                    radioButton.setError("Select one role");
                 } else {
                     createAccount( role, email, pwd, username, address );
                 }
