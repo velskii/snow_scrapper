@@ -7,25 +7,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.snow_scrapper.fragments.CartFragment;
+import com.example.snow_scrapper.fragments.SettingsFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -34,14 +26,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.res.Configuration;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
-import com.daimajia.slider.library.SliderLayout;
 import com.example.snow_scrapper.fragments.HomeFragment;
-import com.example.snow_scrapper.fragments.SecondFragment;
-import com.example.snow_scrapper.fragments.ThirdFragment;
+import com.example.snow_scrapper.fragments.MessagesFragment;
+import com.example.snow_scrapper.fragments.OrdersFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -64,48 +53,32 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // sign out function
-//        Button btnSignOut = (Button) findViewById(R.id.signOut);
-//        btnSignOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                signOut();
-//            }
-//        });
-
         BottomNavigationView bnv = findViewById(R.id.bottom_navigation);
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment;
                 switch (item.getItemId()) {
-                    case R.id.home:
-                        Fragment fragment = new HomeFragment();
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName())
-                                .commit();
-                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName());
-                        transaction.commit();
-                        return true;
-
-                    case R.id.second:
-                        Fragment fragment2 = new SecondFragment();
-                        transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.content_frame, fragment2, fragment2.getClass().getSimpleName());
-
-                        transaction.commit();
-                        return true;
-                    case R.id.settings:
-                        Fragment fragment3 = new ThirdFragment();
-                        transaction = getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.content_frame, fragment3, fragment3.getClass().getSimpleName());
-
-                        transaction.commit();
-                        return true;
-
-
+                    case R.id.messages:
+                        fragment = new MessagesFragment();
+                        break;
+                    case R.id.cart:
+                        fragment = new CartFragment();
+                        break;
+                    case R.id.orders:
+                        fragment = new OrdersFragment();
+                        break;
+                    default:
+                        fragment = new HomeFragment();
+                        break;
                 }
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName())
+                        .commit();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName());
+                transaction.commit();
                 return true;
             };
         });
@@ -115,12 +88,8 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(nvDrawer);
-
-
-
         drawerToggle = setupDrawerToggle();
         drawerToggle.setDrawerIndicatorEnabled(true);
         drawerToggle.syncState();
@@ -133,53 +102,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            String uid = currentUser.getUid();
-            getUserInfo(uid);
-
-        } else {
-            Toast.makeText(HomeActivity.this, "Please login first.",
-                    Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-        }
-    }
-
-    public void getUserInfo(String uid) {
-        this.db.collection("users")
-                .whereEqualTo("uid", uid)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-
-//                                TextView tv_uid = findViewById(R.id.uid);
-//                                TextView tv_username = findViewById(R.id.username);
-//                                TextView tv_role = findViewById(R.id.user_role);
-//                                TextView tv_address = findViewById(R.id.user_address);
-//                                TextView tv_email = findViewById(R.id.user_email);
-//                                tv_uid.setText(document.getData().get("username").toString());
-//                                tv_username.setText(document.getData().get("username").toString());
-//                                tv_role.setText(document.getData().get("role").toString());
-//                                tv_address.setText(document.getData().get("address").toString());
-//                                tv_email.setText(document.getData().get("email").toString());
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-    }
-
     public void signOut() {
         mAuth.signOut();
-        reload();
+        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
     }
 
     private void reload() {
@@ -279,17 +204,22 @@ public class HomeActivity extends AppCompatActivity {
         Fragment fragment = null;
         Class fragmentClass;
         switch(menuItem.getItemId()) {
-            case R.id.nav_first_fragment:
+            case R.id.nav_home_fragment:
                 fragmentClass = HomeFragment.class;
                 break;
-            case R.id.nav_second_fragment:
-                fragmentClass = SecondFragment.class;
+            case R.id.nav_settings_fragment:
+                fragmentClass = SettingsFragment.class;
                 break;
-            case R.id.nav_third_fragment:
-                fragmentClass = ThirdFragment.class;
+            case R.id.sign_out:
+                fragmentClass = null;
+                signOut();
                 break;
             default:
                 fragmentClass = HomeFragment.class;
+                break;
+        }
+        if (fragmentClass == null){
+            return;
         }
 
         try {
@@ -305,7 +235,8 @@ public class HomeActivity extends AppCompatActivity {
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
         // Set action bar title
-        setTitle(menuItem.getTitle());
+//        setTitle(menuItem.getTitle());
+        setTitle( "Snow scrapper" );
         // Close the navigation drawer
         mDrawer.closeDrawers();
     }

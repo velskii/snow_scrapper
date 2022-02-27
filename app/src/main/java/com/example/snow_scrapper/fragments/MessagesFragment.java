@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 
 import com.example.snow_scrapper.R;
 
-public class ThirdFragment extends androidx.fragment.app.Fragment {
+public class MessagesFragment extends androidx.fragment.app.Fragment {
 
-    public ThirdFragment() {
+
+    public MessagesFragment() {
         // Required empty public constructor
     }
 
@@ -18,6 +19,6 @@ public class ThirdFragment extends androidx.fragment.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false);
+        return inflater.inflate(R.layout.fragment_messages, container, false);
     }
 }

@@ -6,14 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <include layout="@layout/set_location_manually"/>
-
-    <include layout="@layout/items_filter" />
-
     <include layout="@layout/slider"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="2dp"
         android:layout_height="200dp"
         android:layout_width="match_parent" />
+
+    <include layout="@layout/set_location_manually"
+        android:layout_marginTop="204dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+
+    <include layout="@layout/items_filter"
+        android:layout_marginTop="260dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
 
     <include layout="@layout/item"
         android:layout_marginTop="320dp"
