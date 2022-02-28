@@ -16,6 +16,7 @@ import com.example.snow_scrapper.R;
 import com.example.snow_scrapper.tradesman_fragments.TradesmanHomeFragment;
 import com.example.snow_scrapper.tradesman_fragments.TradesmanMessagesFragment;
 import com.example.snow_scrapper.tradesman_fragments.TradesmanOrdersFragment;
+import com.example.snow_scrapper.tradesman_fragments.TradesmanServiceListFragment;
 import com.example.snow_scrapper.tradesman_fragments.TradesmanSettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +40,9 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
                 switch (item.getItemId()) {
+                    case R.id.tradesman_service_list:
+                        fragment = new TradesmanServiceListFragment();
+                        break;
                     case R.id.tradesman_messages:
                         fragment = new TradesmanMessagesFragment();
                         break;

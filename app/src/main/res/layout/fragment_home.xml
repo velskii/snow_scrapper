@@ -21,10 +21,17 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"/>
 
-    <include layout="@layout/item"
-        android:layout_marginTop="320dp"
+<!--    <include layout="@layout/item"-->
+<!--        android:layout_marginTop="320dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="match_parent" />-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/service_list"
+        android:layout_marginTop="370dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent" />
+        tools:context=".fragments.HomeFragment"
+        tools:listitem="@layout/item" />
 
 
 </FrameLayout>

@@ -5,6 +5,10 @@
         android:title="Home"
         android:icon="@drawable/home"/>
     <item
+        android:id="@+id/tradesman_service_list"
+        android:title="Home"
+        android:icon="@drawable/ic_location"/>
+    <item
         android:id="@+id/tradesman_messages"
         android:title="Messages"
         android:icon="@drawable/msgs"/>

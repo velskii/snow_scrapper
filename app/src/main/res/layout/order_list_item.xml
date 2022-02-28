@@ -11,7 +11,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/productPrice"
+            android:id="@+id/display_price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/orderNumber"
+                android:id="@+id/display_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -40,7 +40,7 @@
                 android:textSize="@dimen/dimen20sp" />
 
             <TextView
-                android:id="@+id/orderDate"
+                android:id="@+id/display_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

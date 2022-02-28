@@ -5,10 +5,136 @@
     android:layout_height="match_parent"
     tools:context=".tradesman_fragments.TradesmanHomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="tradesman Home" />
+        android:orientation="vertical"
+        tools:context=".view.OrderProductActivity">
+
+        <TextView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="Public your service"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/dimen25sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="Basic information"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/service_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="service name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+
+        <EditText
+            android:id="@+id/service_price"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="price: $/square"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/service_image"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="service image"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="Location information"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/service_location"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="current location"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/service_range"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="service range"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_service"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginRight="@dimen/dimen10dp"
+            android:layout_marginBottom="@dimen/dimen10dp"
+            android:background="@drawable/custom_button_border2"
+            android:text="public your service"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18sp" />
+    </LinearLayout>
 
 </FrameLayout>

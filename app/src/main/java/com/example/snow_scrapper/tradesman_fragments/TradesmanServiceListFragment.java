@@ -1,23 +1,20 @@
-package com.example.snow_scrapper.fragments;
+package com.example.snow_scrapper.tradesman_fragments;
 
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.snow_scrapper.R;
 import com.example.snow_scrapper.RecyclerViewAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -26,17 +23,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+public class TradesmanServiceListFragment extends Fragment {
 
-public class HomeFragment extends androidx.fragment.app.Fragment {
-
-    private SliderLayout sliderShow;
     private FirebaseFirestore db;
-    private static final String TAG = "HomeFragment";
+    private FirebaseAuth mAuth;
+    private static final String TAG = "TradesmanServiceListFragment";
+
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private enum LayoutManagerType {
         LINEAR_LAYOUT_MANAGER
     }
-    protected HomeFragment.LayoutManagerType mCurrentLayoutManagerType;
+    protected LayoutManagerType mCurrentLayoutManagerType;
     protected RecyclerView mRecyclerView;
     protected RecyclerViewAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
@@ -46,69 +43,29 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         getServiceList(savedInstanceState);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.fragment_home, container, false);
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tradesman_service_list, container, false);
         rootView.setTag(TAG);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.service_list);
         return rootView;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        sliderShow = (SliderLayout) view.findViewById(R.id.slider);
-
-        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Hannibal",R.drawable.hannibal);
-        file_maps.put("Big Bang Theory",R.drawable.bigbang);
-        file_maps.put("House of Cards",R.drawable.house);
-        file_maps.put("Game of Thrones", R.drawable.game_of_thrones);
-
-        for(String name : file_maps.keySet()){
-            TextSliderView textSliderView = new TextSliderView(getContext());
-            // initialize a SliderLayout
-            textSliderView
-                    .description(name)
-                    .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this.sliderListener());
-
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra",name);
-
-            sliderShow.addSlider(textSliderView);
-        }
-
-//        ImageView item = view.findViewById(R.id.item_image);
-//        item.setImageResource(R.drawable.bigbang);
-
-//        TextView discountIndicator = view.findViewById(R.id.discount_indicator);
-//        discountIndicator.setVisibility(View.INVISIBLE);
-    }
-
-    @Override
-    public void onStop() {
-        sliderShow.stopAutoCycle();
-        super.onStop();
-    }
-
-    private BaseSliderView.OnSliderClickListener sliderListener(){
-        Toast.makeText(getContext(), sliderShow.getId()+" Clicked", Toast.LENGTH_LONG);
-        return null;
-    }
 
     public void getServiceList(Bundle savedInstanceState) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String uid = "";
+        if(currentUser != null){
+            uid = currentUser.getUid();
+        }
 
         this.db.collection("service_list")
+                .whereEqualTo("publisher", uid)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -126,17 +83,21 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
                                 Log.d("Zhou11", service.toString());
                                 listOfMaps.add(service);
                             }
-
                             mLayoutManager = new LinearLayoutManager(getActivity());
-                            mCurrentLayoutManagerType = HomeFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+
+                            mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+
                             if (savedInstanceState != null) {
-                                mCurrentLayoutManagerType = (HomeFragment.LayoutManagerType) savedInstanceState
+                                // Restore saved layout manager type.
+                                mCurrentLayoutManagerType = (LayoutManagerType) savedInstanceState
                                         .getSerializable(KEY_LAYOUT_MANAGER);
                             }
                             setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
-                            mAdapter = new RecyclerViewAdapter(listOfMaps);
-                            mRecyclerView.setAdapter(mAdapter);
 
+                            mAdapter = new RecyclerViewAdapter(listOfMaps);
+                            // Set CustomAdapter as the adapter for RecyclerView.
+                            mRecyclerView.setAdapter(mAdapter);
+                            // END_INCLUDE(initializeRecyclerView)
                             Log.d("Zhou22", listOfMaps.toString());
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -146,14 +107,14 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
     }
 
 
-    public void setRecyclerViewLayoutManager(HomeFragment.LayoutManagerType layoutManagerType) {
+    public void setRecyclerViewLayoutManager(LayoutManagerType layoutManagerType) {
         int scrollPosition = 0;
         if (mRecyclerView.getLayoutManager() != null) {
             scrollPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
                     .findFirstCompletelyVisibleItemPosition();
         }
         mLayoutManager = new LinearLayoutManager(getActivity());
-        mCurrentLayoutManagerType = HomeFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+        mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.scrollToPosition(scrollPosition);
