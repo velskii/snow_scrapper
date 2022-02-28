@@ -35,11 +35,7 @@ public class MainActivity extends AppCompatActivity {
         if(currentUser != null){
             String uid = currentUser.getUid();
             getUserInfo(uid);
-            startActivity(new Intent(MainActivity.this, HomeActivity.class));
-
         } else {
-//            Toast.makeText(MainActivity.this, "Please login first.",
-//                    Toast.LENGTH_SHORT).show();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
     }
@@ -53,7 +49,20 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+
+                                if ( document.getData().get("role").toString().equalsIgnoreCase("Tradesman") ) {
+
+                                    startActivity(new Intent(MainActivity.this, Tradesman.HomeActivity.class));
+
+                                    return;
+                                } else if (document.getData().get("role").toString().equalsIgnoreCase("Customer") ) {
+
+                                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                    return;
+                                } else {
+                                    Toast.makeText(MainActivity.this, "Abnormal account.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
 
 //                                TextView tv_uid = findViewById(R.id.uid);
 //                                TextView tv_username = findViewById(R.id.username);

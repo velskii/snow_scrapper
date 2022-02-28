@@ -5,15 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".fragments.OrdersFragment">
 
-    <TextView
-        android:id="@+id/label"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="45dp"
-        android:text="Orders"
-        android:textStyle="bold"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/lightGray"
+            android:gravity="start|center"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:text="@string/my_order_history"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/dimen14sp" />
+
+        <include layout="@layout/order_list_item"/>
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/orderList"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            tools:context=".view.OrdersActivity"-->
+<!--            tools:listitem="@layout/order_list_item" />-->
+    </LinearLayout>
 
 </FrameLayout>

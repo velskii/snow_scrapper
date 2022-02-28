@@ -3,17 +3,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SettingsFragment">
 
-    <TextView
-        android:id="@+id/label"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="45dp"
-        android:text="Settings"
-        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.OrderProductActivity">
+
+        <TextView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="@string/add_a_credit_or_debit_card"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/dimen25sp" />
+
+        <EditText
+            android:id="@+id/nameOnCard"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="@string/name_on_card"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/cardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="@string/card_number"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/expirationDate"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="@string/expiration_date"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginRight="@dimen/dimen10dp"
+            android:layout_marginBottom="@dimen/dimen10dp"
+            android:background="@drawable/custom_button_border2"
+            android:text="@string/add_your_card"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18sp" />
+    </LinearLayout>
 
 </FrameLayout>

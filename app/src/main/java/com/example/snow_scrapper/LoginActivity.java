@@ -21,12 +21,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private FirebaseAuth mAuth;
     float x1, x2, y1, y2;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         TextView linkRegister = findViewById(R.id.link_register);
         linkRegister.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +115,36 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void updateUI(FirebaseUser user) {
-        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+
+        this.db.collection("users")
+            .whereEqualTo("uid", user.getUid())
+            .get()
+            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+
+                            if ( document.getData().get("role").toString().equalsIgnoreCase("Tradesman") ) {
+
+                                startActivity(new Intent(LoginActivity.this, Tradesman.HomeActivity.class));
+
+                                return;
+                            } else if (document.getData().get("role").toString().equalsIgnoreCase("Customer") ) {
+
+                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                return;
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Abnormal account.", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.getException());
+                    }
+                }
+            });
+//        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
 
 }

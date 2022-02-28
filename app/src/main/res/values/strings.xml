@@ -27,4 +27,82 @@
     <string name="drawer_close">Close navigation drawer</string>
 
 
+    <!--Server Information-->
+    <string name="see_all">See All</string>
+    <string name="mobile">Mobile</string>
+    <string name="laptop">Laptop</string>
+    <string name="product_image">Product Image</string>
+    <string name="samsung_galaxy_a70">Samsung Galaxy A70</string>
+    <string name="share_product">Share Product</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="add_to_favourite">Add to Favourite</string>
+    <string name="_5399_egp">5399 EGP</string>
+    <string name="name_required">Name Required</string>
+    <string name="all_laptops">All Laptops</string>
+    <string name="all_mobiles">All Mobiles</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="free_shipping">FREE Shipping</string>
+    <string name="fulfilled_by_souq">Fulfilled by Souq</string>
+    <string name="search">Search</string>
+    <string name="search_hint">What are you looking for?</string>
+    <string name="cart">Cart</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="marwa_eltayeb_yahoo_com">marwa_eltayeb@yahoo.com</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--Redundant Information-->
+    <string name="wishlist">WishList</string>
+    <string name="password_assistance">Password assistance</string>
+    <string name="enter_the_email_address_associated_with_your_account">Enter the email address associated with your account.</string>
+    <string name="proceed">Continue</string>
+    <string name="email_address">Email Address</string>
+    <string name="authentication_required">Authentication Required</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="description2">For your security, we need to authenticate your request. We\'ve sent a code from <b>Souq</b> to the email %1$s. Please enter it below.</string>
+    <string name="enter_your_email">Please Enter your correct email</string>
+    <string name="incorrect_code">Incorrect Code</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="counter">60</string>
+    <string name="you_have_exceeded_number_of_requests">You have exceeded number of requests.</string>
+    <string name="poster">poster</string>
+    <string name="close">close</string>
+    <string name="buy">Buy</string>
+    <string name="street_address">Street address</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="phone_number">Phone number</string>
+    <string name="zip">ZIP</string>
+    <string name="enter_a_shipping_address">Enter a shipping address</string>
+    <string name="my_order_history">MY ORDER HISTORY</string>
+    <string name="order_number">324432442</string>
+    <string name="order_date">23-11-2020</string>
+    <string name="track_order">Track Order</string>
+    <string name="status">Status</string>
+    <string name="add_a_credit_or_debit_card">Add a credit or debit card</string>
+    <string name="name_on_card">Name On Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="add_your_card">Add your card</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="drop_down_menu">Drop Down Menu</string>
+    <string name="orders">Orders</string>
+    <string name="order_n">ORDER N:</string>
+    <string name="shipping">Shipping</string>
+    <string name="user_address">23 Mohamed Ali St, Sidi Bishr</string>
+    <string name="dummy_phone">01034238328</string>
+    <string name="items_in_your_order">ITEMS IN YOUR ORDER</string>
+    <string name="item">Your Item has been %1$s</string>
+    <string name="reorder">REORDER</string>
+    <string name="status_bar">STATUS:</string>
+    <string name="recent_searches">Recent Searches</string>
+    <string name="schedule">schedule</string>
+    <string name="clear_all">Clear all</string>
+    <string name="what_are_you_looking_for">What are you looking for?</string>
+    <string name="months">months</string>
+    <string name="years">years</string>
+    <string name="_01">01</string>
+    <string name="_2020">2020</string>
+
+
 </resources>

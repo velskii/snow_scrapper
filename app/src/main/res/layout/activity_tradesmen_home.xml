@@ -4,6 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Tradesmen.HomeActivity">
+    tools:context="Tradesman.HomeActivity">
+
+
+    <fragment
+        android:id="@+id/tradesman_content_frame"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/tradesman_bottom_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="NotSibling" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/tradesman_bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/tradesman_bottom_nav_menu"/>
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

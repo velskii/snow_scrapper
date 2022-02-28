@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name="Tradesmen.HomeActivity"
-            android:exported="false" />
+            android:name="Tradesman.HomeActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
