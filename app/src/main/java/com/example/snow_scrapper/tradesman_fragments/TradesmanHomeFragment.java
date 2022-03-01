@@ -71,8 +71,19 @@ public class TradesmanHomeFragment extends Fragment {
                 EditText edit_service_range = getActivity().findViewById(R.id.service_range);
                 String service_range = edit_service_range.getText().toString();
 
-                storeServiceData(service_name, service_price, service_image, service_location, service_range);
-
+                if (service_name.isEmpty()) {
+                    edit_service_name.setError("Please input service name");
+                } else if (service_price.isEmpty()) {
+                    edit_service_price.setError("Please input service price");
+                } else if (service_image.isEmpty()) {
+                    edit_service_image.setError("Please upload service image");
+                } else if (service_location.isEmpty()) {
+                    edit_service_location.setError("Please input service location");
+                } else if (service_range.isEmpty()) {
+                    edit_service_range.setError("Please input service range");
+                } else {
+                    storeServiceData(service_name, service_price, service_image, service_location, service_range);
+                }
 
             }
         });
