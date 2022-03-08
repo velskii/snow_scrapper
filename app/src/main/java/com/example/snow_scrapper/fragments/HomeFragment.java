@@ -66,11 +66,8 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
         sliderShow = (SliderLayout) view.findViewById(R.id.slider);
 
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Hannibal",R.drawable.hannibal);
-        file_maps.put("Big Bang Theory",R.drawable.bigbang);
-        file_maps.put("House of Cards",R.drawable.house);
-        file_maps.put("Game of Thrones", R.drawable.game_of_thrones);
-
+        file_maps.put("Hannibal",R.drawable.snow1);
+        file_maps.put("Big Bang Theory",R.drawable.s1);
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(getContext());
             // initialize a SliderLayout

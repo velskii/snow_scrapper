@@ -79,7 +79,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.getDisplayprice().setText(mDataSet.get(position).get("price"));
         viewHolder.getDisplayLocation().setText(mDataSet.get(position).get("location"));
         viewHolder.getDisplayRange().setText(mDataSet.get(position).get("range"));
-        viewHolder.getDisplayImage().setImageResource(R.drawable.bigbang);
+        viewHolder.getDisplayImage().setImageResource(R.drawable.snow1);
     }
     @Override
     public int getItemCount() {

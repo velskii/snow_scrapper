@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+//        signOut();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             String uid = currentUser.getUid();
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
+    }
+
+    public void signOut() {
+        mAuth.signOut();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
     }
 
     public void getUserInfo(String uid) {

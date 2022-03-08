@@ -17,7 +17,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="@dimen/dimen10dp"
             android:layout_marginTop="@dimen/dimen10dp"
-            android:text="Public your service"
+            android:text="Publish your service"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/dimen25sp" />
 
@@ -132,7 +132,7 @@
             android:layout_marginRight="@dimen/dimen10dp"
             android:layout_marginBottom="@dimen/dimen10dp"
             android:background="@drawable/custom_button_border2"
-            android:text="public your service"
+            android:text="publish your service"
             android:textAllCaps="false"
             android:textSize="@dimen/dimen18sp" />
     </LinearLayout>

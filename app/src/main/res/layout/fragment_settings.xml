@@ -7,29 +7,139 @@
     tools:context=".fragments.SettingsFragment">
 
     <LinearLayout
+        android:id="@+id/setting_show"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".view.OrderProductActivity">
 
         <TextView
-            android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="@dimen/dimen10dp"
             android:layout_marginTop="@dimen/dimen10dp"
-            android:text="@string/add_a_credit_or_debit_card"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/dimen25sp" />
+            android:text="Settings profile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/username_show"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
 
+        <TextView
+            android:id="@+id/password_show"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/city_show"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/address_show"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/postal_code_show"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+
+        <TextView
+            android:id="@+id/telephone_show"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/email_show"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/update_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginRight="@dimen/dimen10dp"
+            android:layout_marginBottom="@dimen/dimen10dp"
+            android:background="@drawable/custom_button_border2"
+            android:text="Update settings"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_update"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.OrderProductActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="Edit your profile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
         <EditText
-            android:id="@+id/nameOnCard"
+            android:id="@+id/setting_username"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:autofillHints="none"
             android:background="@drawable/custom_border"
-            android:hint="@string/name_on_card"
+            android:hint="User Name"
             android:inputType="text"
             android:maxLines="1"
             android:paddingStart="@dimen/dimen10dp"
@@ -39,13 +149,78 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
-            android:id="@+id/cardNumber"
+            android:id="@+id/setting_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="10dp"
             android:autofillHints="none"
             android:background="@drawable/custom_border"
-            android:hint="@string/card_number"
+            android:hint="Password"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_city"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="City"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_address"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Address"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_postal_code"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Postal Code"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+
+        <EditText
+            android:id="@+id/setting_telephone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Telephone number"
             android:inputType="number"
             android:maxLines="1"
             android:paddingStart="@dimen/dimen10dp"
@@ -54,20 +229,26 @@
             android:textColorHint="@color/vDarkGray"
             tools:ignore="TextContrastCheck" />
 
-        <TextView
-            android:id="@+id/expirationDate"
+        <EditText
+            android:id="@+id/setting_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginStart="@dimen/dimen10dp"
-            android:layout_marginTop="@dimen/dimen10dp"
-            android:text="@string/expiration_date"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dimen20sp"
-            android:textStyle="bold" />
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Email address"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/addCard"
+            android:id="@+id/setting_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dimen10dp"
@@ -75,7 +256,7 @@
             android:layout_marginRight="@dimen/dimen10dp"
             android:layout_marginBottom="@dimen/dimen10dp"
             android:background="@drawable/custom_button_border2"
-            android:text="@string/add_your_card"
+            android:text="Save settings"
             android:textAllCaps="false"
             android:textSize="@dimen/dimen18sp" />
     </LinearLayout>

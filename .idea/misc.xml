@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_settings_update.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_table.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_third.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/fragment_tradesman_home.xml" value="0.2578125" />

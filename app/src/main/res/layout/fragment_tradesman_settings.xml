@@ -5,10 +5,260 @@
     android:layout_height="match_parent"
     tools:context=".tradesman_fragments.TradesmanSettingsFragment">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tradesman_sign_out"
-        android:text="Sign Out"/>
+    <LinearLayout
+        android:id="@+id/setting_show_tradesman"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.OrderProductActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="Settings profile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/username_show_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/password_show_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/city_show_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/address_show_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/postal_code_show_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+
+        <TextView
+            android:id="@+id/telephone_show_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+        <TextView
+            android:id="@+id/email_show_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"/>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/update_link_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginRight="@dimen/dimen10dp"
+            android:layout_marginBottom="@dimen/dimen10dp"
+            android:background="@drawable/custom_button_border2"
+            android:text="Update settings"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setting_update_tradesman"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".view.OrderProductActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="Edit your profile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/setting_username_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="User Name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_password_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Password"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_city_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="City"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_address_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Address"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_postal_code_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Postal Code"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+
+        <EditText
+            android:id="@+id/setting_telephone_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Telephone number"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/setting_email_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Email address"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/setting_save_tradesman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginRight="@dimen/dimen10dp"
+            android:layout_marginBottom="@dimen/dimen10dp"
+            android:background="@drawable/custom_button_border2"
+            android:text="Save settings"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18sp" />
+    </LinearLayout>
 
 </FrameLayout>
