@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -106,6 +107,16 @@ public class TradesmanHomeFragment extends Fragment {
         service.put("range", service_range);
 
         service.put("publisher", uid);
+
+        Double discount = 1.0;
+
+        service.put("sale_volume", 0);
+        service.put("discount", discount);
+        service.put("rating", 5);
+        service.put("current_price", Double.valueOf(service_price) * discount);
+
+        service.put("created_time", Calendar.getInstance().getTime());
+        service.put("updated_time", Calendar.getInstance().getTime());
 
         // Add a new document with a generated ID
         db.collection("service_list")
