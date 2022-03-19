@@ -38,6 +38,12 @@
         tools:context=".fragments.HomeFragment"
         tools:listitem="@layout/item" />
 
+    <Button
+        android:id="@+id/btnchat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="chat" />
+
 
 </FrameLayout>
 </ScrollView>

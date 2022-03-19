@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_chat_input.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/drawable/background_content_top.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/drawable/background_received_message.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/drawable/background_sent_message.xml" value="0.23177083333333334" />
         <entry key="app/src/main/res/drawable/btn_custom.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/drawable/button_accent.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/connect.xml" value="0.2035" />
@@ -17,11 +21,14 @@
         <entry key="app/src/main/res/drawable/ic_favorite_border.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/ic_items_grey.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/ic_location.xml" value="0.1865" />
+        <entry key="app/src/main/res/drawable/ic_profile_pic.xml" value="0.22291666666666668" />
+        <entry key="app/src/main/res/drawable/ic_send.xml" value="0.22291666666666668" />
         <entry key="app/src/main/res/drawable/ic_share.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/ic_view_type_full_width.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/ic_view_type_two_item.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/touch_feedback.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/white_circle_drawable.xml" value="0.1865" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2578125" />
@@ -54,6 +61,8 @@
         <entry key="app/src/main/res/layout/fragment_tradesman_service_list.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_tradesman_settings.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/item.xml" value="0.1921875" />
+        <entry key="app/src/main/res/layout/item_container_received_message.xml" value="0.215625" />
+        <entry key="app/src/main/res/layout/item_container_sent_message.xml" value="0.215625" />
         <entry key="app/src/main/res/layout/items_filter.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/list_view_item_row.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/main.xml" value="0.2578125" />

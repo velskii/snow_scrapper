@@ -1,10 +1,12 @@
 package com.example.snow_scrapper.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.example.snow_scrapper.ChatActivity;
 import com.example.snow_scrapper.R;
 import com.example.snow_scrapper.RecyclerViewAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -57,6 +60,16 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         rootView.setTag(TAG);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.service_list);
+
+        Button BtnChat = (Button) rootView.findViewById(R.id.btnchat);
+        BtnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                startActivity(intent);
+
+            }
+        });
         return rootView;
     }
 
