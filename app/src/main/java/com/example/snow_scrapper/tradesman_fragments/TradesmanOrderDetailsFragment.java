@@ -1,6 +1,5 @@
 package com.example.snow_scrapper.tradesman_fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,94 +15,98 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.snow_scrapper.R;
+import com.example.snow_scrapper.fragments.OrdersFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class TradesmanServiceDetailsFragment extends Fragment {
+public class TradesmanOrderDetailsFragment extends Fragment {
 
-    private static final String TAG = "TradesmanServiceDetailsFragment";
+    private static final String TAG = "TradesmanOrderDetailsFragment";
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private String id;
+    private String orderId;
 
-    public TradesmanServiceDetailsFragment(String id) {
-        this.id = id;
+    public TradesmanOrderDetailsFragment(String orderId){
+        this.orderId = orderId;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
-        getServiceDetailsById(mAuth.getUid(), this.id);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tradesman_service_details, container, false);
+        return inflater.inflate(R.layout.fragment_tradesman_order_details, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getOrderDetailsById(mAuth.getUid(), this.orderId);
 
-        Button btnPurchase = getActivity().findViewById(R.id.tradesman_back);
-        btnPurchase.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = getActivity().findViewById(R.id.tradesman_order_details_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Fragment fragment;
-                fragment = new TradesmanServiceListFragment();
+                fragment = new TradesmanOrdersFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.tradesman_content_frame, fragment, fragment.getClass().getSimpleName())
                         .commit();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.tradesman_content_frame, fragment, fragment.getClass().getSimpleName());
                 transaction.commit();
-//
-//                BottomNavigationView bnv = getActivity().findViewById(R.id.tradesman_bottom_navigation);
-//
-//                bnv.setSelectedItemId(R.id.tradesman_service_list);
+
+                BottomNavigationView bnv = getActivity().findViewById(R.id.tradesman_bottom_navigation);
+                bnv.setSelectedItemId(R.id.tradesman_orders);
             }
         });
 
     }
 
-    public void getServiceDetailsById(String uid, String item_id) {
+    public void getOrderDetailsById(String uid, String order_id) {
 
-        db.collection("service_list")
-                .whereEqualTo(FieldPath.documentId(), item_id)
+        db.collection("orders")
+                .whereEqualTo(FieldPath.documentId(), order_id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                TextView item_name = getActivity().findViewById(R.id.tradesman_item_name);
+                                TextView item_name = getActivity().findViewById(R.id.tradesman_order_details_item_name);
                                 item_name.setText(document.getString("name"));
 
-                                TextView location = getActivity().findViewById(R.id.tradesman_item_location);
+                                TextView location = getActivity().findViewById(R.id.tradesman_order_details_item_location);
                                 location.setText(document.getString("location"));
 
-                                ImageView image = getActivity().findViewById(R.id.tradesman_item_image);
+                                TextView seller = getActivity().findViewById(R.id.tradesman_order_details_item_seller);
+                                seller.setText(document.getString("seller"));
+
+                                ImageView image = getActivity().findViewById(R.id.tradesman_order_details_item_image);
                                 image.setImageResource(R.drawable.snow1);
+                                // document.getString("image")
 
-                                TextView price = getActivity().findViewById(R.id.tradesman_item_price);
-                                price.setText(document.getString("price") + " $/square");
+                                TextView price = getActivity().findViewById(R.id.tradesman_order_details_item_price);
+                                price.setText(document.getString("price"));
 
-                                TextView rating = getActivity().findViewById(R.id.tradesman_item_rating);
-                                rating.setText(document.getLong("rating").toString() + " stars");
+                                TextView rating = getActivity().findViewById(R.id.tradesman_order_details_item_rating);
+                                rating.setText(document.getString("rating"));
 
-                                TextView range = getActivity().findViewById(R.id.tradesman_item_range);
+                                TextView range = getActivity().findViewById(R.id.tradesman_order_details_item_range);
                                 range.setText(document.getString("range"));
 
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
@@ -115,5 +118,4 @@ public class TradesmanServiceDetailsFragment extends Fragment {
                 });
 
     }
-
 }

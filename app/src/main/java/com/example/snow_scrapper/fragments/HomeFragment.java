@@ -1,6 +1,7 @@
 package com.example.snow_scrapper.fragments;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,20 +12,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.snow_scrapper.ChatActivity;
+import com.example.snow_scrapper.Db;
+import com.example.snow_scrapper.DbListenerInterface;
 import com.example.snow_scrapper.R;
+import com.example.snow_scrapper.CustomerRecyclerViewAdapter;
 import com.example.snow_scrapper.RecyclerViewAdapter;
+import com.example.snow_scrapper.tradesman_fragments.TradesmanServiceListFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +42,7 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
 
     private SliderLayout sliderShow;
     private FirebaseFirestore db;
+    private FirebaseAuth mAuth;
     private static final String TAG = "HomeFragment";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private enum LayoutManagerType {
@@ -41,7 +50,7 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
     }
     protected HomeFragment.LayoutManagerType mCurrentLayoutManagerType;
     protected RecyclerView mRecyclerView;
-    protected RecyclerViewAdapter mAdapter;
+    protected CustomerRecyclerViewAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Map<String, String>> listOfMaps = new ArrayList<Map<String, String>>();
 
@@ -49,7 +58,7 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = FirebaseFirestore.getInstance();
-        getServiceList(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -79,8 +88,8 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
         sliderShow = (SliderLayout) view.findViewById(R.id.slider);
 
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Hannibal",R.drawable.snow1);
-        file_maps.put("Big Bang Theory",R.drawable.s1);
+        file_maps.put("snow shovel",R.drawable.snow1);
+        file_maps.put("snow scrapper",R.drawable.s1);
         for(String name : file_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(getContext());
             // initialize a SliderLayout
@@ -98,11 +107,134 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
             sliderShow.addSlider(textSliderView);
         }
 
-//        ImageView item = view.findViewById(R.id.item_image);
-//        item.setImageResource(R.drawable.bigbang);
+        getData(savedInstanceState, "new");
 
-//        TextView discountIndicator = view.findViewById(R.id.discount_indicator);
-//        discountIndicator.setVisibility(View.INVISIBLE);
+        TextView btn_reset = getActivity().findViewById(R.id.clear_sort);
+        TextView btn_sort_by = getActivity().findViewById(R.id.sort_by);
+        TextView btn_new = getActivity().findViewById(R.id.sort_by_new);
+
+
+        TextView btn_bestseller = (TextView) getActivity().findViewById(R.id.sort_by_bestseller);
+        TextView btn_price_lowest = getActivity().findViewById(R.id.sort_by_price_lowest);
+        TextView btn_price_highest = getActivity().findViewById(R.id.sort_by_price_highest);
+        TextView btn_discount = getActivity().findViewById(R.id.sort_by_discount);
+        TextView btn_rating_highest = getActivity().findViewById(R.id.sort_by_rating_highest);
+
+        btn_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_sort_by.setText("Sort By New");
+                btn_new.setBackgroundResource(R.color.logo_green_color);
+
+                btn_bestseller.setBackgroundResource(R.color.light_grey);
+                btn_price_lowest.setBackgroundResource(R.color.light_grey);
+                btn_price_highest.setBackgroundResource(R.color.light_grey);
+                btn_discount.setBackgroundResource(R.color.light_grey);
+                btn_rating_highest.setBackgroundResource(R.color.light_grey);
+            }
+        });
+
+        btn_bestseller.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btn_sort_by.setText("Sort By Bestseller");
+                btn_bestseller.setBackgroundResource(R.color.logo_green_color);
+
+                btn_new.setBackgroundResource(R.color.light_grey);
+                btn_price_lowest.setBackgroundResource(R.color.light_grey);
+                btn_price_highest.setBackgroundResource(R.color.light_grey);
+                btn_discount.setBackgroundResource(R.color.light_grey);
+                btn_rating_highest.setBackgroundResource(R.color.light_grey);
+
+//                getServiceList(savedInstanceState, "bestseller");
+                showDataInRecycler(savedInstanceState, "bestseller");
+            }
+        });
+
+        btn_discount.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btn_sort_by.setText("Sort By Discount");
+                btn_discount.setBackgroundResource(R.color.logo_green_color);
+
+                btn_new.setBackgroundResource(R.color.light_grey);
+                btn_price_lowest.setBackgroundResource(R.color.light_grey);
+                btn_price_highest.setBackgroundResource(R.color.light_grey);
+                btn_bestseller.setBackgroundResource(R.color.light_grey);
+                btn_rating_highest.setBackgroundResource(R.color.light_grey);
+                showDataInRecycler(savedInstanceState, "discount");
+            }
+        });
+
+
+        btn_new.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btn_sort_by.setText("Sort By New");
+                btn_new.setBackgroundResource(R.color.logo_green_color);
+
+                btn_discount.setBackgroundResource(R.color.light_grey);
+                btn_price_lowest.setBackgroundResource(R.color.light_grey);
+                btn_price_highest.setBackgroundResource(R.color.light_grey);
+                btn_bestseller.setBackgroundResource(R.color.light_grey);
+                btn_rating_highest.setBackgroundResource(R.color.light_grey);
+                showDataInRecycler(savedInstanceState, "new");
+
+            }
+        });
+
+        btn_price_lowest.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btn_sort_by.setText("Sort By Price Lowest");
+                btn_price_lowest.setBackgroundResource(R.color.logo_green_color);
+
+                btn_discount.setBackgroundResource(R.color.light_grey);
+                btn_new.setBackgroundResource(R.color.light_grey);
+                btn_price_highest.setBackgroundResource(R.color.light_grey);
+                btn_bestseller.setBackgroundResource(R.color.light_grey);
+                btn_rating_highest.setBackgroundResource(R.color.light_grey);
+                showDataInRecycler(savedInstanceState, "price_lowest");
+
+            }
+        });
+
+        btn_price_highest.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btn_sort_by.setText("Sort By Price Highest");
+                btn_price_highest.setBackgroundResource(R.color.logo_green_color);
+
+                btn_discount.setBackgroundResource(R.color.light_grey);
+                btn_new.setBackgroundResource(R.color.light_grey);
+                btn_price_lowest.setBackgroundResource(R.color.light_grey);
+                btn_bestseller.setBackgroundResource(R.color.light_grey);
+                btn_rating_highest.setBackgroundResource(R.color.light_grey);
+                showDataInRecycler(savedInstanceState, "price_highest");
+
+            }
+        });
+
+        btn_rating_highest.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                btn_sort_by.setText("Sort By Rating Highest");
+                btn_rating_highest.setBackgroundResource(R.color.logo_green_color);
+
+                btn_discount.setBackgroundResource(R.color.light_grey);
+                btn_new.setBackgroundResource(R.color.light_grey);
+                btn_price_lowest.setBackgroundResource(R.color.light_grey);
+                btn_bestseller.setBackgroundResource(R.color.light_grey);
+                btn_bestseller.setBackgroundResource(R.color.light_grey);
+                showDataInRecycler(savedInstanceState, "rating");
+            }
+        });
     }
 
     @Override
@@ -116,43 +248,101 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
         return null;
     }
 
-    public void getServiceList(Bundle savedInstanceState) {
+    public void getData(Bundle savedInstanceState, String sort_by){
+        new Db().getServiceList( new DbListenerInterface() {
+            @Override
+            public void onStart() {
+                //DO SOME THING WHEN START GET DATA HERE
+            }
 
-        this.db.collection("service_list")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onSuccess(List data) {
+                Log.d("Zhou999", data.toString());
+                listOfMaps = data;
+                TextView filter = getActivity().findViewById(R.id.filter_title);
+                filter.setText("Service Items: "+ listOfMaps.size());
+                showDataInRecycler(savedInstanceState, "new");
+            }
+
+            @Override
+            public void onFailed(String databaseError) {
+
+            }
+
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void showDataInRecycler( Bundle savedInstanceState, String sort_by) {
+
+        switch (sort_by) {
+            case "new":
+                listOfMaps.sort(new Comparator<Map<String, String>>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Map<String, String> service = new HashMap<>();
-                                service.put( "name", document.getData().get("name").toString() );
-                                service.put( "price", document.getData().get("price").toString() );
-                                service.put( "image", document.getData().get("image").toString() );
-                                service.put( "location", document.getData().get("location").toString() );
-                                service.put( "range", document.getData().get("range").toString() );
-                                service.put( "publisher", document.getData().get("publisher").toString() );
-                                Log.d("Zhou11", service.toString());
-                                listOfMaps.add(service);
-                            }
-
-                            mLayoutManager = new LinearLayoutManager(getActivity());
-                            mCurrentLayoutManagerType = HomeFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
-                            if (savedInstanceState != null) {
-                                mCurrentLayoutManagerType = (HomeFragment.LayoutManagerType) savedInstanceState
-                                        .getSerializable(KEY_LAYOUT_MANAGER);
-                            }
-                            setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
-                            mAdapter = new RecyclerViewAdapter(listOfMaps);
-                            mRecyclerView.setAdapter(mAdapter);
-
-                            Log.d("Zhou22", listOfMaps.toString());
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
+                    public int compare(Map<String, String> o1, Map<String, String> o2) {
+                        return o1.get("created_time").compareTo(o2.get("created_time"));
+//                                    return 0;
                     }
                 });
+                break;
+            case "best_seller":
+                listOfMaps.sort(new Comparator<Map<String, String>>() {
+                    @Override
+                    public int compare(Map<String, String> o1, Map<String, String> o2) {
+                        return o1.get("sale_volume").compareTo(o2.get("sale_volume"));
+//                                    return 0;
+                    }
+                });
+                break;
+            case "discount":
+                listOfMaps.sort(new Comparator<Map<String, String>>() {
+                    @Override
+                    public int compare(Map<String, String> o1, Map<String, String> o2) {
+                        return o1.get("discount").compareTo(o2.get("discount"));
+                    }
+                });
+                break;
+            case "price_lowest":
+                listOfMaps.sort(new Comparator<Map<String, String>>() {
+                    @Override
+                    public int compare(Map<String, String> o1, Map<String, String> o2) {
+                        return o1.get("price").compareTo(o2.get("price"));
+                    }
+                });
+                break;
+            case "price_highest":
+                listOfMaps.sort(new Comparator<Map<String, String>>() {
+                    @Override
+                    public int compare(Map<String, String> o1, Map<String, String> o2) {
+                        return o2.get("price").compareTo(o1.get("price"));
+                    }
+                });
+                break;
+            case "rating_highest":
+                listOfMaps.sort(new Comparator<Map<String, String>>() {
+                    @Override
+                    public int compare(Map<String, String> o1, Map<String, String> o2) {
+                        return o1.get("rating").compareTo(o2.get("rating"));
+                    }
+                });
+                break;
+        }
+        mLayoutManager = new LinearLayoutManager(getActivity());
+
+        mCurrentLayoutManagerType = HomeFragment.LayoutManagerType.LINEAR_LAYOUT_MANAGER;
+
+        if (savedInstanceState != null) {
+            // Restore saved layout manager type.
+            mCurrentLayoutManagerType = (HomeFragment.LayoutManagerType) savedInstanceState
+                    .getSerializable(KEY_LAYOUT_MANAGER);
+        }
+        setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
+
+        mAdapter = new CustomerRecyclerViewAdapter(listOfMaps);
+        // Set CustomAdapter as the adapter for RecyclerView.
+        mRecyclerView.setAdapter(mAdapter);
+        // END_INCLUDE(initializeRecyclerView)
     }
 
 

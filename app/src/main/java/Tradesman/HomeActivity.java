@@ -43,9 +43,9 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.tradesman_service_list:
                         fragment = new TradesmanServiceListFragment();
                         break;
-                    case R.id.tradesman_messages:
-                        fragment = new TradesmanMessagesFragment();
-                        break;
+//                    case R.id.tradesman_messages:
+//                        fragment = new TradesmanMessagesFragment();
+//                        break;
                     case R.id.tradesman_orders:
                         fragment = new TradesmanOrdersFragment();
                         break;

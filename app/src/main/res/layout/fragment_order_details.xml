@@ -4,17 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".tradesman_fragments.TradesmanServiceDetailsFragment">
-
-        <TextView
-            android:id="@+id/card"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="@dimen/dimen10dp"
-            android:layout_marginTop="@dimen/dimen10dp"
-            android:text="Service Details"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/dimen25sp" />
+    tools:context=".fragments.OrderDetailsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,9 +22,17 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:id="@+id/tradesman_item_name"
             android:layout_height="50dp"
+            android:id="@+id/order_details_item_name"
             android:text="Name:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/order_details_item_seller"
+            android:text="Seller:"
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
             android:textStyle="bold" />
@@ -58,13 +56,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/tradesman_item_location"
+            android:id="@+id/order_details_item_location"
             android:text="Location: "
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
             android:textStyle="bold" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,9 +79,9 @@
 
         <ImageView
             android:layout_width="@dimen/dimen200dp"
-            android:layout_height="@dimen/dimen200dp"
+            android:layout_height="160dp"
             android:layout_marginLeft="@dimen/dimen10dp"
-            android:id="@+id/tradesman_item_image"
+            android:id="@+id/order_details_item_image"
             android:src="@drawable/s2"/>
     </LinearLayout>
 
@@ -105,12 +102,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/tradesman_item_price"
+            android:id="@+id/order_details_item_price"
             android:text="Price: "
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -126,18 +122,16 @@
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
             android:textStyle="bold" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/tradesman_item_rating"
+            android:id="@+id/order_details_item_rating"
             android:text="Rating: "
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
             android:textStyle="bold" />
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -151,29 +145,53 @@
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
             android:textStyle="bold" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/tradesman_item_range"
+            android:id="@+id/order_details_item_range"
             android:text="Range: "
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/tradesman_back"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/order_details_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_arrow_left"
+        android:contentDescription="Feedback"
+        android:layout_margin="16dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/order_details_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen10dp"
+        android:layout_marginRight="@dimen/dimen10dp"
+        android:layout_marginBottom="@dimen/dimen10dp"
+        android:background="@drawable/custom_button_border2"
+        android:text="Back to List"
+        android:textAllCaps="false"
+        android:textSize="@dimen/dimen18sp" />
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/snackbar_feedback"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen10dp"
-            android:layout_marginTop="@dimen/dimen20dp"
-            android:layout_marginRight="@dimen/dimen10dp"
-            android:layout_marginBottom="@dimen/dimen10dp"
-            android:background="@drawable/custom_button_border2"
-            android:text="Back to list"
-            android:textAllCaps="false"
-            android:textSize="@dimen/dimen18sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Feedback is coming" />
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

@@ -20,9 +20,6 @@
             android:name=".OrderDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ServiceDetailsActivity"
-            android:exported="false" />
-        <activity
             android:name="Tradesman.HomeActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />

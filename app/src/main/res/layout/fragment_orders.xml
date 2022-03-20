@@ -22,14 +22,14 @@
             android:textStyle="bold"
             android:textSize="@dimen/dimen14sp" />
 
-        <include layout="@layout/order_list_item"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/order_list"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/order_list_item" />
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/orderList"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            tools:context=".view.OrdersActivity"-->
-<!--            tools:listitem="@layout/order_list_item" />-->
+<!--        <include layout="@layout/order_list_item"/>-->
     </LinearLayout>
 
 </FrameLayout>

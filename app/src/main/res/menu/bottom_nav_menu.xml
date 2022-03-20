@@ -4,10 +4,10 @@
         android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/home"/>
-    <item
-        android:id="@+id/messages"
-        android:title="Messages"
-        android:icon="@drawable/msgs"/>
+<!--    <item-->
+<!--        android:id="@+id/messages"-->
+<!--        android:title="Messages"-->
+<!--        android:icon="@drawable/msgs"/>-->
     <item
         android:id="@+id/cart"
         android:title="Shopping cart"

@@ -137,42 +137,66 @@ public class TradesmanSettingsFragment extends Fragment {
                                 editUsername.setHint("Username: " + document.getData().get("username").toString());
 
                                 TextView pwd = getActivity().findViewById(R.id.password_show_tradesman);
-                                pwd.setText("Password:    " + document.getData().get("password").toString());
-
-
                                 EditText editPwd = getActivity().findViewById(R.id.setting_password_tradesman);
-                                editPwd.setHint("Password: " + document.getData().get("password").toString());
+                                if (document.getData().get("password") != null) {
+                                    pwd.setText("Password:    " + document.getData().get("password").toString());
+                                    editPwd.setHint("Password: " + document.getData().get("password").toString());
+
+                                } else {
+                                    pwd.setText("Password:    ");
+                                    editPwd.setHint("Password");
+                                }
 
 
                                 TextView city = getActivity().findViewById(R.id.city_show_tradesman);
-                                city.setText("City:           " + document.getData().get("city").toString());
                                 EditText editCity = getActivity().findViewById(R.id.setting_city_tradesman);
-                                editCity.setHint("City: " + document.getData().get("city").toString());
+                                if (document.getData().get("city") != null) {
+                                    city.setText("City:           " + document.getData().get("city").toString());
+                                    editCity.setHint("City: " + document.getData().get("city").toString());
+                                } else {
+                                    city.setText("City:           " );
+                                    editCity.setHint("City: ");
+                                }
 
                                 TextView address = getActivity().findViewById(R.id.address_show_tradesman);
-                                address.setText("Address:    " + document.getData().get("address").toString());
                                 EditText editAddress = getActivity().findViewById(R.id.setting_address_tradesman);
-                                editAddress.setHint("Address: " + document.getData().get("address").toString());
-
-
+                                if (document.getData().get("address") != null) {
+                                    address.setText("Address:    " + document.getData().get("address").toString());
+                                    editAddress.setHint("Address: " + document.getData().get("address").toString());
+                                } else {
+                                    address.setText("Address:    " );
+                                    editAddress.setHint("Address: " );
+                                }
 
                                 TextView postal_code = getActivity().findViewById(R.id.postal_code_show_tradesman);
-                                postal_code.setText("Postal Code: " + document.getData().get("postal_code").toString());
                                 EditText editPostalCode = getActivity().findViewById(R.id.setting_postal_code_tradesman);
-                                editPostalCode.setHint("Postal Code: " + document.getData().get("postal_code").toString());
+                                if(document.getData().get("postal_code") != null) {
+                                    postal_code.setText("Postal Code: " + document.getData().get("postal_code").toString());
+                                    editPostalCode.setHint("Postal Code: " + document.getData().get("postal_code").toString());
+                                } else {
+                                    postal_code.setText("Postal Code: " );
+                                    editPostalCode.setHint("Postal Code: ");
+                                }
 
                                 TextView telephone = getActivity().findViewById(R.id.telephone_show_tradesman);
-                                telephone.setText("Telephone:  " + document.getData().get("telephone").toString());
                                 EditText editTelephone = getActivity().findViewById(R.id.setting_telephone_tradesman);
-                                editTelephone.setHint("Telephone: " + document.getData().get("telephone").toString());
+                                if (document.getData().get("telephone") != null) {
+                                    telephone.setText("Telephone:  " + document.getData().get("telephone").toString());
+                                    editTelephone.setHint("Telephone: " + document.getData().get("telephone").toString());
+                                } else {
+                                    telephone.setText("Telephone:  ");
+                                    editTelephone.setHint("Telephone: ");
+                                }
 
                                 TextView email = getActivity().findViewById(R.id.email_show_tradesman);
-                                email.setText("Email:      " + document.getData().get("email").toString());
                                 EditText editEmail = getActivity().findViewById(R.id.setting_email_tradesman);
-                                editEmail.setHint("Email: " + document.getData().get("email").toString());
-
-
-
+                                if(document.getData().get("email") != null) {
+                                    email.setText("Email:      " + document.getData().get("email").toString());
+                                    editEmail.setHint("Email: " + document.getData().get("email").toString());
+                                } else {
+                                    email.setText("Email:      ");
+                                    editEmail.setHint("Email: ");
+                                }
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());

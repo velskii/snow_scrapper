@@ -5,10 +5,31 @@
     android:layout_height="match_parent"
     tools:context=".tradesman_fragments.TradesmanOrdersFragment">
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tradesman_sign_out"
-        android:text="Sign Out"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/lightGray"
+            android:gravity="start|center"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:text="@string/my_order_history"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/dimen14sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tradesman_order_list"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/order_list_item" />
+
+        <!--        <include layout="@layout/order_list_item"/>-->
+    </LinearLayout>
 
 </FrameLayout>

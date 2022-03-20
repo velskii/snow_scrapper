@@ -6,6 +6,13 @@
     tools:context=".fragments.CartFragment">
 
 
-    <include layout="@layout/cart_list_item"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_list"
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/cart_list_item" />
+
+<!--    <include layout="@layout/cart_list_item"/>-->
 
 </FrameLayout>

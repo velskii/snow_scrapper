@@ -1,5 +1,6 @@
 package com.example.snow_scrapper.tradesman_fragments;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.snow_scrapper.LoginActivity;
 import com.example.snow_scrapper.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -89,8 +91,20 @@ public class TradesmanHomeFragment extends Fragment {
             }
         });
 
+        Button signOutBtn = getActivity().findViewById(R.id.tradesman_sign_out);
+        signOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
+            }
+        });
+
     }
 
+    public void signOut() {
+        mAuth.signOut();
+        startActivity(new Intent(getContext(), LoginActivity.class));
+    }
 
     public void storeServiceData(String service_name, String service_price, String service_image, String service_location, String service_range) {
 

@@ -60,9 +60,9 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
                 switch (item.getItemId()) {
-                    case R.id.messages:
-                        fragment = new MessagesFragment();
-                        break;
+//                    case R.id.messages:
+//                        fragment = new MessagesFragment();
+//                        break;
                     case R.id.cart:
                         fragment = new CartFragment();
                         break;
