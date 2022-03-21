@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.snow_scrapper.ChatActivity;
 import com.example.snow_scrapper.Db;
 import com.example.snow_scrapper.DbListenerInterface;
+import com.example.snow_scrapper.MapsActivity;
 import com.example.snow_scrapper.R;
 import com.example.snow_scrapper.CustomerRecyclerViewAdapter;
 import com.example.snow_scrapper.RecyclerViewAdapter;
@@ -28,7 +30,11 @@ import com.example.snow_scrapper.tradesman_fragments.TradesmanServiceListFragmen
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
@@ -53,6 +59,7 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
     protected CustomerRecyclerViewAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Map<String, String>> listOfMaps = new ArrayList<Map<String, String>>();
+    String userId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,29 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         rootView.setTag(TAG);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.service_list);
+
+        TextView locationAddress =  (TextView) rootView.findViewById(R.id.locationAddress);
+        //locationAddress.setText("134 hummingbird dr");
+
+        userId = mAuth.getCurrentUser().getUid();
+
+        DocumentReference documentReference = db.collection("users").document(userId);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e ) {
+                locationAddress.setText(documentSnapshot.getString("address"));
+            }
+        });
+
+
+        Button  btnChangeLocation = (Button) rootView.findViewById(R.id.changeLocation);
+        btnChangeLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button BtnChat = (Button) rootView.findViewById(R.id.btnchat);
         BtnChat.setOnClickListener(new View.OnClickListener() {

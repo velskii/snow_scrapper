@@ -106,6 +106,7 @@
     <string name="years">years</string>
     <string name="_01">01</string>
     <string name="_2020">2020</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 
 </resources>
