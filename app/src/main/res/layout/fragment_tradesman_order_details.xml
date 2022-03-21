@@ -45,6 +45,7 @@
         android:layout_marginStart="@dimen/dimen10dp"
         android:layout_marginTop="@dimen/dimen10dp"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="160dp"
             android:layout_height="wrap_content"
@@ -60,7 +61,10 @@
             android:text="Location: "
             android:textColor="@color/black"
             android:textSize="@dimen/dimen20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -166,6 +170,19 @@
         android:text="Back to List"
         android:textAllCaps="false"
         android:textSize="@dimen/dimen18sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/navigateCustomerLocation"
+        android:layout_marginLeft="@dimen/dimen10dp"
+        android:layout_marginRight="@dimen/dimen10dp"
+        android:layout_marginBottom="@dimen/dimen10dp"
+        android:text="Navigate to service location"
+        android:textSize="@dimen/dimen18sp"
+        android:background="@drawable/custom_button_border2"
+
+        />
 
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.snow_scrapper.tradesman_fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.snow_scrapper.MapsActivity;
 import com.example.snow_scrapper.R;
 import com.example.snow_scrapper.fragments.OrdersFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -72,6 +74,15 @@ public class TradesmanOrderDetailsFragment extends Fragment {
 
                 BottomNavigationView bnv = getActivity().findViewById(R.id.tradesman_bottom_navigation);
                 bnv.setSelectedItemId(R.id.tradesman_orders);
+            }
+        });
+
+        Button navCustomer = getActivity().findViewById(R.id.navigateCustomerLocation);
+        navCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                startActivity(intent);
             }
         });
 
