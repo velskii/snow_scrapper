@@ -9,6 +9,9 @@
 
     <string name="login">Login</string>
     <string name="password">Password</string>
+    <string name="forgotpwd">Forgot Password</string>
+    <string name="txtview_email">Enter Email Id:</string>
+    <string name="send">Send</string>
     <string name="e_mail">Email</string>
     <string name="tag">Join us and Search/public your \nshoveling snow services with others</string>
 

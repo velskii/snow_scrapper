@@ -48,6 +48,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // redirect to Forgot Pwd page code
+        Button btnforgotpwd = findViewById(R.id.btn_forgotpwd);
+        btnforgotpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgotPwd.class));
+            }
+        });
+
 
 
         Button btnLogin = findViewById(R.id.btn_login);
