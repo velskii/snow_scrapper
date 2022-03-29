@@ -36,7 +36,6 @@ public class OrderDetailsFragment extends Fragment {
     private String orderId;
 
     public OrderDetailsFragment(String orderId){
-        Log.d("Zhou3333", orderId);
         this.orderId = orderId;
     }
 
@@ -90,6 +89,7 @@ public class OrderDetailsFragment extends Fragment {
 
     public void getOrderDetailsById(String uid, String order_id) {
 
+        Log.d("Zhou", order_id);
         db.collection("orders")
                 .whereEqualTo(FieldPath.documentId(), order_id)
                 .get()
@@ -98,6 +98,9 @@ public class OrderDetailsFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                Log.d("Zhou", document.toString());
+
                                 TextView item_name = getActivity().findViewById(R.id.order_details_item_name);
                                 item_name.setText(document.getString("name"));
 

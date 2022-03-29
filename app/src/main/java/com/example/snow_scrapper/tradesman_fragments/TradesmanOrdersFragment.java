@@ -76,7 +76,6 @@ public class TradesmanOrdersFragment extends Fragment {
             @Override
             public void onSuccess(List data) {
                 listOfMaps = data;
-//                Log.d("Zhou5666", data.toString());
                 showDataInRecycler(savedInstanceState);
             }
 

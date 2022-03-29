@@ -288,7 +288,6 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onSuccess(List data) {
-                Log.d("Zhou999", data.toString());
                 listOfMaps = data;
                 TextView filter = getActivity().findViewById(R.id.filter_title);
                 filter.setText("Service Items: "+ listOfMaps.size());

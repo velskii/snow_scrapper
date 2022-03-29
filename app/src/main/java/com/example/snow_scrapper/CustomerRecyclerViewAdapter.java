@@ -96,9 +96,9 @@ public class CustomerRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     public void onBindViewHolder(RecyclerViewAdapter.ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         Log.d(TAG, "Element " + position + " set.");
         viewHolder.getDisplayName().setText(mDataSet.get(position).get("name"));
-        viewHolder.getDisplayprice().setText(mDataSet.get(position).get("price"));
-        viewHolder.getDisplayLocation().setText(mDataSet.get(position).get("location"));
-        viewHolder.getDisplayRange().setText(mDataSet.get(position).get("range"));
+        viewHolder.getDisplayprice().setText("Price: " + mDataSet.get(position).get("price") + "$");
+        viewHolder.getDisplayLocation().setText("Location: " + mDataSet.get(position).get("location"));
+        viewHolder.getDisplayRange().setText("Range: " + mDataSet.get(position).get("range"));
         viewHolder.getDisplayImage().setImageResource(R.drawable.snow1);
 
         viewHolder.getId().setText(mDataSet.get(position).get("id"));

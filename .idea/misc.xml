@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_connect.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/fragment_dialog.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_fixtures.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2578125" />

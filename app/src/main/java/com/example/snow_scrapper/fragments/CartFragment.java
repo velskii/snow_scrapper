@@ -68,7 +68,6 @@ public class CartFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
         rootView.setTag(TAG);
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.cart_list);
-        Log.d("Zhou5555", mRecyclerView.toString());
         return rootView;
     }
 
@@ -88,7 +87,6 @@ public class CartFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onSuccess(List data) {
-                Log.d("Zhou999", data.toString());
                 listOfMaps = data;
 
                 showDataInRecycler(savedInstanceState, "new");

@@ -6,9 +6,16 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.snow_scrapper.fragments.OrdersFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -84,7 +91,6 @@ public class Db {
                                 service.put( "rating", document.getData().get("rating").toString() );
                                 service.put( "current_price", document.getData().get("current_price").toString() );
 
-                                Log.d("Zhou11", service.toString());
                                 listOfMaps.add(service);
 
                             }
@@ -119,10 +125,15 @@ public class Db {
                                 cart.put( "price", document.getData().get("price").toString() );
                                 cart.put( "image", document.getData().get("image").toString() );
 
-                                Log.d("Zhou11", cart.toString());
+                                cart.put( "location", document.getData().get("location").toString() );
+                                cart.put( "range", document.getData().get("range").toString() );
+                                cart.put( "rating", document.getData().get("rating").toString() );
+                                cart.put( "seller", document.getData().get("seller").toString() );
+                                cart.put( "service_id", document.getData().get("service_id").toString() );
+                                cart.put( "uid", document.getData().get("uid").toString() );
                                 cartData.add(cart);
-
                             }
+                            Log.d("Zhou", cartData.toString());
                             listener.onSuccess(cartData);
 
                         } else {
@@ -132,6 +143,33 @@ public class Db {
                     }
                 });
     }
+
+    public void deleteCartDataByUid( String cart_id, final DbListenerInterface listener) {
+        listener.onStart();
+
+        db = FirebaseFirestore.getInstance();
+
+        db.collection("cart")
+//                .whereEqualTo(FieldPath.documentId(), cart_id)
+                .document(cart_id)
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        listener.onSuccess( cartData );
+                        Log.d(TAG, "DocumentSnapshot successfully deleted!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        listener.onFailed( "delete failed" );
+                        Log.w(TAG, "Error deleting document", e);
+                    }
+                });
+    }
+
+
 
     public void getOrderDataByUid( String uid, final DbListenerInterface listener) {
         listener.onStart();
@@ -161,7 +199,6 @@ public class Db {
                                 String date = DateFormat.format("dd-MM-yyyy H:m:s", cal).toString();
 
                                 orders.put( "created_time", date );
-//                                Log.d("Zhou11", orders.toString());
 
 
                                 orderData.add(orders);
@@ -204,7 +241,7 @@ public class Db {
                                 String date = DateFormat.format("dd-MM-yyyy H:m:s", cal).toString();
 
                                 tradesmanOrders.put( "created_time", date );
-                                Log.d("Zhou5777", tradesmanOrders.toString());
+                                
 
 
                                 tradesmanOrderData.add(tradesmanOrders);
@@ -260,7 +297,6 @@ public class Db {
                                 service.put( "rating", document.getData().get("rating").toString() );
                                 service.put( "current_price", document.getData().get("current_price").toString() );
 
-                                Log.d("Zhou11", service.toString());
                                 listOfMaps.add(service);
 
                             }
