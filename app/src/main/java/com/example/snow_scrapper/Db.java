@@ -65,7 +65,8 @@ public class Db {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, String> service = new HashMap<>();
                                 if (
-                                        document.getData().get("created_time").toString() == ""
+                                        document.getData().get("service_type").toString() == ""
+                                                || document.getData().get("created_time").toString() == ""
                                                 || document.getData().get("updated_time").toString() == ""
                                                 || document.getData().get("sale_volume").toString() == ""
                                                 || document.getData().get("discount").toString() == ""
@@ -90,6 +91,7 @@ public class Db {
                                 service.put( "discount", document.getData().get("discount").toString() );
                                 service.put( "rating", document.getData().get("rating").toString() );
                                 service.put( "current_price", document.getData().get("current_price").toString() );
+                                service.put( "service_type", document.getData().get("service_type").toString() );
 
                                 listOfMaps.add(service);
 

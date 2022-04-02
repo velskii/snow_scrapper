@@ -203,7 +203,7 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                btn_sort_by.setText("Sort By New");
+                btn_sort_by.setText("Lawn Maintenance ");
                 btn_new.setBackgroundResource(R.color.logo_green_color);
 
                 btn_discount.setBackgroundResource(R.color.light_grey);
@@ -310,7 +310,7 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
                 listOfMaps.sort(new Comparator<Map<String, String>>() {
                     @Override
                     public int compare(Map<String, String> o1, Map<String, String> o2) {
-                        return o1.get("created_time").compareTo(o2.get("created_time"));
+                        return o1.get("service_type").compareTo(o2.get("service_type"));
 //                                    return 0;
                     }
                 });

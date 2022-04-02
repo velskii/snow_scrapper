@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDLoPSDa6GSqTHq9iztx0jtKw7vD-jja4g" />

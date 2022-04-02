@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
@@ -38,7 +38,9 @@
         android:id="@+id/btnchat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="chat" />
+        android:backgroundTint="#E91E63"
+        android:text="chat"
+        android:textColor="#FAF9F9" />
 
 
 </FrameLayout>

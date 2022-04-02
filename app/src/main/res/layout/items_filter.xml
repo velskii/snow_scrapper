@@ -130,7 +130,7 @@
                 <TextView
                     android:id="@+id/sort_by_new"
                     android:gravity="center"
-                    android:text="New"
+                    android:text="Lawn"
                     android:layout_marginStart="5dp"
                     android:background="@color/logo_green_color"
                     android:layout_weight="1"

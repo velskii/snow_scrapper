@@ -68,6 +68,22 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
+            android:id="@+id/service_type"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:autofillHints="none"
+            android:background="@drawable/custom_border"
+            android:hint="Snow Removal or Lawn Maintenance"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dimen10dp"
+            android:paddingEnd="@dimen/dimen10dp"
+            android:singleLine="true"
+            android:textColorHint="@color/vDarkGray"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
             android:id="@+id/service_image"
             android:layout_width="match_parent"
             android:layout_height="50dp"

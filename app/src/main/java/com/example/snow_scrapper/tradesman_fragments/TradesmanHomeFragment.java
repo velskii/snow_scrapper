@@ -62,6 +62,9 @@ public class TradesmanHomeFragment extends Fragment {
                 EditText edit_service_name = getActivity().findViewById(R.id.service_name);
                 String service_name = edit_service_name.getText().toString();
 
+                EditText edit_service_type = getActivity().findViewById(R.id.service_type);
+                String service_type = edit_service_type.getText().toString();
+
                 EditText edit_service_price = getActivity().findViewById(R.id.service_price);
                 String service_price = edit_service_price.getText().toString();
 
@@ -75,7 +78,9 @@ public class TradesmanHomeFragment extends Fragment {
                 String service_range = edit_service_range.getText().toString();
 
                 if (service_name.isEmpty()) {
-                    edit_service_name.setError("Please input service name");
+                        edit_service_name.setError("Please input service name");
+                } else if (service_type.isEmpty()) {
+                    edit_service_type.setError("Please input service price");
                 } else if (service_price.isEmpty()) {
                     edit_service_price.setError("Please input service price");
                 } else if (service_image.isEmpty()) {
@@ -85,7 +90,7 @@ public class TradesmanHomeFragment extends Fragment {
                 } else if (service_range.isEmpty()) {
                     edit_service_range.setError("Please input service range");
                 } else {
-                    storeServiceData(service_name, service_price, service_image, service_location, service_range);
+                    storeServiceData(service_name, service_type, service_price, service_image, service_location, service_range);
                 }
 
             }
@@ -106,7 +111,7 @@ public class TradesmanHomeFragment extends Fragment {
         startActivity(new Intent(getContext(), LoginActivity.class));
     }
 
-    public void storeServiceData(String service_name, String service_price, String service_image, String service_location, String service_range) {
+    public void storeServiceData(String service_name,String service_type, String service_price, String service_image, String service_location, String service_range) {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         String uid = "";
@@ -115,6 +120,7 @@ public class TradesmanHomeFragment extends Fragment {
         }
         Map<String, Object> service = new HashMap<>();
         service.put("name", service_name);
+        service.put("service_type", service_type);
         service.put("price", service_price);
         service.put("image", service_image);
         service.put("location", service_location);
