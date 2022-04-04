@@ -155,15 +155,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/order_details_feedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/ic_arrow_left"
-        android:contentDescription="Feedback"
-        android:layout_margin="16dp" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/order_details_back"
         android:layout_width="match_parent"
@@ -175,23 +166,5 @@
         android:text="Back to List"
         android:textAllCaps="false"
         android:textSize="@dimen/dimen18sp" />
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/snackbar_feedback"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Feedback is coming" />
-        </LinearLayout>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

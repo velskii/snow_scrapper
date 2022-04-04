@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.snow_scrapper.Db;
 import com.example.snow_scrapper.DbListenerInterface;
 import modals.CartDeleteDialogFragment;
+
+import com.example.snow_scrapper.HomeActivity;
 import com.example.snow_scrapper.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -156,7 +158,6 @@ public class CartRecyclerViewAdapter  extends RecyclerView.Adapter<CartRecyclerV
                             }
                             @Override
                             public void onSuccess(List data) {
-                                Log.d("Zhou", String.valueOf(position));
                                 removeAt( position );
                                 if (flag == "purchase"){
                                     addOrder( orderDetail, v );
@@ -193,18 +194,9 @@ public class CartRecyclerViewAdapter  extends RecyclerView.Adapter<CartRecyclerV
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                        Fragment fragment = new OrderDetailsFragment( documentReference.getId() );
-                        activity.getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName())
-                                .commit();
-                        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-                        transaction.replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName());
-                        transaction.commit();
 
-                        BottomNavigationView bnv = activity.findViewById(R.id.bottom_navigation);
-                        bnv.setSelectedItemId(R.id.orders);
                         Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        fragmentJump(v, documentReference.getId());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -224,6 +216,21 @@ public class CartRecyclerViewAdapter  extends RecyclerView.Adapter<CartRecyclerV
         mDataSet.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, mDataSet.size());
+    }
+
+    private void fragmentJump(View v, String id) {
+        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+
+        BottomNavigationView bnv = activity.findViewById(R.id.bottom_navigation);
+        bnv.setSelectedItemId(R.id.orders);
+
+        Fragment fragment = new OrderDetailsFragment( id );
+        activity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName())
+                .commit();
+        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, fragment, fragment.getClass().getSimpleName());
+        transaction.commit();
     }
 
 }

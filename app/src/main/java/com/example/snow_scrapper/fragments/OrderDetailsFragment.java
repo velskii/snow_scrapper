@@ -1,5 +1,7 @@
 package com.example.snow_scrapper.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -56,10 +58,10 @@ public class OrderDetailsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getOrderDetailsById(mAuth.getUid(), this.orderId);
+        getOrderDetailsById(mAuth.getUid(), this.orderId, view);
 
-        Button btnPurchase = getActivity().findViewById(R.id.order_details_back);
-        btnPurchase.setOnClickListener(new View.OnClickListener() {
+        Button btnBack = view.findViewById(R.id.order_details_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment fragment;
@@ -75,21 +77,10 @@ public class OrderDetailsFragment extends Fragment {
                 bnv.setSelectedItemId(R.id.orders);
             }
         });
-
-        FloatingActionButton btnCart = getActivity().findViewById(R.id.order_details_feedback);
-        btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(getActivity().findViewById(R.id.snackbar_feedback), "Feedback function is coming~",
-                        Snackbar.LENGTH_SHORT)
-                        .show();
-            }
-        });
     }
 
-    public void getOrderDetailsById(String uid, String order_id) {
+    public void getOrderDetailsById(String uid, String order_id, View view) {
 
-        Log.d("Zhou", order_id);
         db.collection("orders")
                 .whereEqualTo(FieldPath.documentId(), order_id)
                 .get()
@@ -98,29 +89,27 @@ public class OrderDetailsFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                Log.d("Zhou", document.toString());
-
-                                TextView item_name = getActivity().findViewById(R.id.order_details_item_name);
+                                
+                                TextView item_name = view.findViewById(R.id.order_details_item_name);
                                 item_name.setText(document.getString("name"));
 
-                                TextView location = getActivity().findViewById(R.id.order_details_item_location);
+                                TextView location = view.findViewById(R.id.order_details_item_location);
                                 location.setText(document.getString("location"));
 
-                                TextView seller = getActivity().findViewById(R.id.order_details_item_seller);
+                                TextView seller = view.findViewById(R.id.order_details_item_seller);
                                 seller.setText(document.getString("seller"));
 
-                                ImageView image = getActivity().findViewById(R.id.order_details_item_image);
+                                ImageView image = view.findViewById(R.id.order_details_item_image);
                                 image.setImageResource(R.drawable.snow1);
                                 // document.getString("image")
 
-                                TextView price = getActivity().findViewById(R.id.order_details_item_price);
+                                TextView price = view.findViewById(R.id.order_details_item_price);
                                 price.setText(document.getString("price"));
 
-                                TextView rating = getActivity().findViewById(R.id.order_details_item_rating);
+                                TextView rating = view.findViewById(R.id.order_details_item_rating);
                                 rating.setText(document.getString("rating"));
 
-                                TextView range = getActivity().findViewById(R.id.order_details_item_range);
+                                TextView range = view.findViewById(R.id.order_details_item_range);
                                 range.setText(document.getString("range"));
 
 //                                Log.d(TAG, document.getId() + " => " + document.getData());
