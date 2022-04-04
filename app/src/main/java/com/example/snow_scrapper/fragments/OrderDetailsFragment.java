@@ -89,7 +89,7 @@ public class OrderDetailsFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                
+
                                 TextView item_name = view.findViewById(R.id.order_details_item_name);
                                 item_name.setText(document.getString("name"));
 

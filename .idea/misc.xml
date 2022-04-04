@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/button_accent.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/connect.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/custom_border.xml" value="0.1865" />
+        <entry key="app/src/main/res/drawable/custom_button_border1.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/custom_button_border2.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/et_custom.xml" value="0.27395833333333336" />
         <entry key="app/src/main/res/drawable/ic_add_shopping_cart.xml" value="0.1865" />
@@ -28,8 +29,6 @@
         <entry key="app/src/main/res/drawable/white_circle_drawable.xml" value="0.1865" />
         <entry key="app/src/main/res/layout/activity_forgot_pwd.xml" value="0.10833333333333334" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2578125" />
-        <entry key="app/src/main/res/layout/activity_home_lawn.xml" value="0.22780797101449277" />
-        <entry key="app/src/main/res/layout/activity_landing_page.xml" value="0.22864583333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.1921875" />
@@ -43,6 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_cart.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_connect.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/fragment_dialog.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_fixtures.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2578125" />

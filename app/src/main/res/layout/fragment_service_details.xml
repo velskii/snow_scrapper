@@ -155,26 +155,41 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/customer_add_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/ic_add_shopping_cart"
-        android:contentDescription="Add to Cart"
-        android:layout_margin="16dp" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/customer_add_cart"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="end|bottom"-->
+<!--        android:src="@drawable/ic_add_shopping_cart"-->
+<!--        android:contentDescription="Add to Cart"-->
+<!--        android:layout_margin="16dp" />-->
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/customer_purchase_service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dimen10dp"
-        android:layout_marginTop="@dimen/dimen20dp"
-        android:layout_marginRight="@dimen/dimen10dp"
-        android:layout_marginBottom="@dimen/dimen10dp"
-        android:background="@drawable/custom_button_border2"
-        android:text="Purchase this service"
-        android:textAllCaps="false"
-        android:textSize="@dimen/dimen18sp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/customer_add_cart"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:layout_marginRight="@dimen/dimen5dp"
+            android:background="@drawable/custom_button_border2"
+            android:text="Add TO CART"
+            android:textSize="@dimen/dimen18sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/customer_purchase_service"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:layout_marginLeft="@dimen/dimen5dp"
+            android:background="@drawable/custom_button_border1"
+            android:text="PURCHASE"
+            android:textAllCaps="false"
+            android:textSize="@dimen/dimen18sp" />
+    </LinearLayout>
+
 
 </LinearLayout>

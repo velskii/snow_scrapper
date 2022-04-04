@@ -65,7 +65,7 @@ public class ServiceDetailsFragment extends Fragment {
             }
         });
 
-        FloatingActionButton btnCart = getActivity().findViewById(R.id.customer_add_cart);
+        Button btnCart = getActivity().findViewById(R.id.customer_add_cart);
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
