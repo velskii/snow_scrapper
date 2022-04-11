@@ -167,4 +167,12 @@
         android:textAllCaps="false"
         android:textSize="@dimen/dimen18sp" />
 
+    <Button
+        android:id="@+id/btnchat"
+        android:layout_width="398dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E91E63"
+        android:text="chat"
+        android:textColor="#FAF9F9" />
+
 </LinearLayout>

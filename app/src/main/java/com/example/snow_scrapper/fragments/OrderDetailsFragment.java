@@ -2,6 +2,7 @@ package com.example.snow_scrapper.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.snow_scrapper.ChatActivity;
 import com.example.snow_scrapper.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -52,7 +54,17 @@ public class OrderDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_details, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_order_details, container, false);
+        Button BtnChat = (Button) rootView.findViewById(R.id.btnchat);
+        BtnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        return rootView;
     }
 
     @Override

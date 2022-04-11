@@ -33,15 +33,5 @@
         android:layout_height="wrap_content"
         tools:context=".fragments.HomeFragment"
         tools:listitem="@layout/item" />
-
-    <Button
-        android:id="@+id/btnchat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#E91E63"
-        android:text="chat"
-        android:textColor="#FAF9F9" />
-
-
 </FrameLayout>
 </ScrollView>

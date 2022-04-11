@@ -100,15 +100,6 @@ public class HomeFragment extends androidx.fragment.app.Fragment {
             }
         });
 
-        Button BtnChat = (Button) rootView.findViewById(R.id.btnchat);
-        BtnChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ChatActivity.class);
-                startActivity(intent);
-
-            }
-        });
         return rootView;
     }
 
