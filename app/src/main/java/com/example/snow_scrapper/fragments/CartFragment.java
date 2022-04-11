@@ -22,7 +22,6 @@ import com.example.snow_scrapper.DbListenerInterface;
 import com.example.snow_scrapper.HomeActivity;
 import com.example.snow_scrapper.LoginActivity;
 import com.example.snow_scrapper.R;
-import com.example.snow_scrapper.RecyclerViewAdapter;
 import com.example.snow_scrapper.tradesman_fragments.TradesmanServiceListFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

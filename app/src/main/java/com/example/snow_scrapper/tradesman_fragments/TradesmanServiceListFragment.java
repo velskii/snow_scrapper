@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.example.snow_scrapper.Db;
 import com.example.snow_scrapper.DbListenerInterface;
 import com.example.snow_scrapper.R;
-import com.example.snow_scrapper.RecyclerViewAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +45,7 @@ public class TradesmanServiceListFragment extends Fragment {
     }
     protected LayoutManagerType mCurrentLayoutManagerType;
     protected RecyclerView mRecyclerView;
-    protected RecyclerViewAdapter mAdapter;
+    protected TradesmanServiceRVAdapter mAdapter;
     protected RecyclerView.LayoutManager mLayoutManager;
     protected List<Map<String, String>> listOfMaps = new ArrayList<Map<String, String>>();
 
@@ -296,7 +295,7 @@ public class TradesmanServiceListFragment extends Fragment {
         }
         setRecyclerViewLayoutManager(mCurrentLayoutManagerType);
 
-        mAdapter = new RecyclerViewAdapter(listOfMaps);
+        mAdapter = new TradesmanServiceRVAdapter(listOfMaps);
         // Set CustomAdapter as the adapter for RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
         // END_INCLUDE(initializeRecyclerView)

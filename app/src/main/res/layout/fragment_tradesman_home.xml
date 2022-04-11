@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -83,21 +83,57 @@
             android:textColorHint="@color/vDarkGray"
             tools:ignore="TextContrastCheck" />
 
-        <EditText
-            android:id="@+id/service_image"
+<!--        <EditText-->
+<!--            android:id="@+id/service_image"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:autofillHints="none"-->
+<!--            android:background="@drawable/custom_border"-->
+<!--            android:hint="service image"-->
+<!--            android:inputType="text"-->
+<!--            android:maxLines="1"-->
+<!--            android:paddingStart="@dimen/dimen10dp"-->
+<!--            android:paddingEnd="@dimen/dimen10dp"-->
+<!--            android:singleLine="true"-->
+<!--            android:textColorHint="@color/vDarkGray"-->
+<!--            tools:ignore="TextContrastCheck" />-->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:autofillHints="none"
-            android:background="@drawable/custom_border"
-            android:hint="service image"
-            android:inputType="text"
-            android:maxLines="1"
+            android:layout_marginStart="@dimen/dimen10dp"
+            android:layout_marginTop="@dimen/dimen10dp"
+            android:text="Choose the image"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen20sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/layout_button"
+            android:orientation="horizontal"
+            android:weightSum="3"
             android:paddingStart="@dimen/dimen10dp"
             android:paddingEnd="@dimen/dimen10dp"
-            android:singleLine="true"
-            android:textColorHint="@color/vDarkGray"
-            tools:ignore="TextContrastCheck" />
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_margin="10dp">
+            <Button
+                android:id="@+id/btnChoose"
+                android:text="Choose"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnUpload"
+                android:text="Upload"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -149,11 +185,11 @@
             android:layout_marginLeft="@dimen/dimen10dp"
             android:layout_marginTop="@dimen/dimen20dp"
             android:layout_marginRight="@dimen/dimen10dp"
-            android:layout_marginBottom="@dimen/dimen10dp"
+            android:layout_marginBottom="@dimen/dimen100dp"
             android:background="@drawable/custom_button_border2"
             android:text="publish your service"
             android:textAllCaps="false"
             android:textSize="@dimen/dimen18sp" />
     </LinearLayout>
 
-</FrameLayout>
+</androidx.core.widget.NestedScrollView>
