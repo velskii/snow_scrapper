@@ -1,9 +1,11 @@
 package com.example.snow_scrapper.tradesman_fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -24,8 +26,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -35,6 +41,10 @@ public class TradesmanOrderDetailsFragment extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
     private String orderId;
+    private String source = "scarborough town centre";
+    private String destination;
+    String userId;
+
 
     public TradesmanOrderDetailsFragment(String orderId){
         this.orderId = orderId;
@@ -52,6 +62,10 @@ public class TradesmanOrderDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tradesman_order_details, container, false);
+
+
+
+
     }
 
     @Override
@@ -77,14 +91,42 @@ public class TradesmanOrderDetailsFragment extends Fragment {
             }
         });
 
+//Fetching destination location -----------------------------
+
+        DocumentReference documentReference = db.collection("orders").document(this.orderId);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e ) {
+                destination = documentSnapshot.getString("location");
+            }
+        });
+//fetching source location---------------------------------------
+//        userId = mAuth.getCurrentUser().getUid();
+//        documentReference = db.collection("users").document(userId);
+//        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e ) {
+//                source = documentSnapshot.getString("address");
+//            }
+//        });
+
+
+
         Button navCustomer = getActivity().findViewById(R.id.navigateCustomerLocation);
         navCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
+                //Intent intent = new Intent(getActivity(), MapsActivity.class);
+                //startActivity(intent);
+
+                Uri uri = Uri.parse("https://www.google.co.in/maps/dir/" + source + "/" + destination);
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                intent.setPackage("com.google.android.apps.maps");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
+
 
     }
 
