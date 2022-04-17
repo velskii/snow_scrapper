@@ -15,8 +15,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.snow_scrapper.LoginActivity;
 import com.example.snow_scrapper.OptionActivity;
 import com.example.snow_scrapper.R;
+import com.example.snow_scrapper.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,6 +64,7 @@ public class ServiceDetailsFragment extends Fragment {
         btnPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addToOrder();
                 payOption();
             }
         });

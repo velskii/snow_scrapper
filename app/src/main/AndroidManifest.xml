@@ -29,7 +29,18 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
-
+        <activity
+            android:name=".OptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CashActivity"
+            android:exported="false" />
         <activity
             android:name=".MapsNavigateActivity"
             android:exported="false"
