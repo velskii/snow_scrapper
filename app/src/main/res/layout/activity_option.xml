@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.snow_scrapper.OptionActivity">
+
+    <TextView
+        android:id="@+id/payText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAYMENT METHODS"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingStart="100dp"
+        android:paddingTop="70dp"/>
+
+    <TextView
+        android:id="@+id/optText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingStart="50dp"
+        android:paddingTop="120dp"
+        android:text="Choose the desired payment options:"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCard"
+        android:layout_width="378dp"
+        android:layout_height="58dp"
+        android:layout_alignBottom="@+id/optText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="-123dp"
+        android:text="Pay Using Card"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="775dp" />
+
+    <Button
+        android:id="@+id/btnCash"
+        android:layout_width="378dp"
+        android:layout_height="58dp"
+        android:layout_alignBottom="@+id/btnCard"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="-212dp"
+        android:text="Pay Using Cash"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+</RelativeLayout>

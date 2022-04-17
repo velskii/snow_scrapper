@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.snow_scrapper.StatusActivity">
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="365dp"
+        android:text="Transaction Status"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="313dp" />
+
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="371dp"
+        android:layout_height="52dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="253dp"
+        android:text="Thank you for acquiring the services."
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="421dp" />
+
+    <TextView
+        android:id="@+id/msg1"
+        android:layout_width="373dp"
+        android:layout_height="117dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="126dp"
+        android:text="We've sent you an email with all the details of your order, payment and remember to track your order using the application."
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="421dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="386dp"
+        android:layout_height="224dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="407dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="64dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="82dp"
+        android:text="Order Confirmation"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="313dp" />
+</RelativeLayout>

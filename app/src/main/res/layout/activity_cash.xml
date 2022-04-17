@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.snow_scrapper.CashActivity">
+
+    <TextView
+        android:id="@+id/cashShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="150dp"
+        android:paddingTop="100dp"
+        android:text="Cash Payment"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/cashPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="200dp"
+        android:text="Thank you for acquiring the services"
+        android:textSize="20dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/cashSer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="300dp"
+        android:text="Please pay directly to the tradesman."
+        android:textSize="20dp"
+        android:textStyle="bold|italic" />
+</RelativeLayout>

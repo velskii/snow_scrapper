@@ -27,14 +27,16 @@
         <entry key="app/src/main/res/drawable/ic_view_type_two_item.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/touch_feedback.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/white_circle_drawable.xml" value="0.1865" />
+        <entry key="app/src/main/res/layout/activity_card.xml" value="0.18931159420289856" />
         <entry key="app/src/main/res/layout/activity_forgot_pwd.xml" value="0.10833333333333334" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2578125" />
-        <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.1921875" />
+        <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.27415771484375" />
         <entry key="app/src/main/res/layout/activity_orders.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.18923076923076923" />
         <entry key="app/src/main/res/layout/activity_service_details.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_status.xml" value="0.18931159420289856" />
         <entry key="app/src/main/res/layout/activity_tradesmen_home.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/cart_list_item.xml" value="0.2578125" />
