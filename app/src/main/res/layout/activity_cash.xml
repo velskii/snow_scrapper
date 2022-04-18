@@ -36,4 +36,18 @@
         android:text="Please pay directly to the tradesman."
         android:textSize="20dp"
         android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/orderHis"
+        android:layout_width="212dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="180dp"
+        android:text="Order History"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="313dp" />
 </RelativeLayout>
